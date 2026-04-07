@@ -1,0 +1,410 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+<title>Mission JEET · Premium Batches</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: #f2f2f7;
+    color: #1a1a1a;
+  }
+  .app-container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  /* HEADER */
+  .header { 
+    background: #0a0a0a; 
+    padding: 18px 24px 14px; 
+    position: sticky; 
+    top: 0; 
+    z-index: 100;
+  }
+  .logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  /* New Square Logo */
+  .real-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.28);
+  }
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .logo-mission {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .logo-jeet {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    background: #e53935;
+    color: #fff;
+    padding: 1px 8px;
+    border-radius: 3px;
+    margin-top: 2px;
+  }
+
+  .search-bar {
+    background: #fff;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    gap: 10px;
+    flex: 1;
+    max-width: 300px;
+  }
+  .search-bar input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    width: 100%;
+    background: transparent;
+  }
+
+  /* Banner */
+  .hero-banner-rotating {
+    margin: 16px 20px;
+    border-radius: 28px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+  }
+  .banner-slide {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 20px;
+    position: relative;
+  }
+  .banner-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(0,0,0,0.75), rgba(0,0,0,0.35));
+  }
+  .banner-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding: 12px 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .active-dot {
+    width: 28px;
+    background: #ffb74d;
+  }
+
+  .hero-class-tag { background: #ffb74d; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: bold; }
+  .hero-title { color: #fff; font-size: 36px; font-weight: 800; font-family: 'Rajdhani'; }
+  .hero-subtitle { color: #ffd966; font-size: 20px; }
+  .hero-price-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 8px 16px;
+    font-weight: bold;
+  }
+
+  /* CONTENT */
+  .section { padding: 0 20px; }
+  .info-card {
+    background: linear-gradient(135deg, #e0f2f1, #b2dfdb);
+    padding: 16px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .alert-card {
+    background: #fff3e0;
+    padding: 16px;
+    border-radius: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    border-left: 4px solid #e53935;
+  }
+  .telegram-btn {
+    background: #e53935;
+    color: #fff;
+    border: none;
+    border-radius: 40px;
+    padding: 10px;
+    width: 100%;
+    margin-top: 8px;
+    font-weight: bold;
+  }
+
+  /* Courses */
+  .courses-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+  }
+
+  .course-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+    cursor: pointer;
+  }
+
+  .course-banner {
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .course-badge { background: rgba(0,0,0,0.6); padding: 4px 12px; border-radius: 20px; font-size: 12px; color: #ffd966; }
+  .course-price-tag { background: #fff; padding: 6px 12px; border-radius: 12px; }
+  .course-info { padding: 14px; }
+
+  /* Footer */
+  .footer {
+    background: #0a0a0a;
+    color: #ccc;
+    text-align: center;
+    padding: 24px 20px;
+    margin-top: 28px;
+  }
+  .footer-logo { font-family: 'Rajdhani'; font-weight: 700; font-size: 20px; }
+
+</style>
+</head>
+
+<body>
+<div class="app-container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo-container">
+
+      <div class="logo-wrapper">
+        <img src="https://i.ibb.co/9H8f84yT/IMG-20260330-WA0000.jpg" class="real-logo">
+
+        <div class="logo-text">
+          <span class="logo-mission">Mission</span>
+          <span class="logo-jeet">SHILAJEET</span>
+        </div>
+      </div>
+
+      <div class="search-bar">
+        <i class="fas fa-search"></i>
+        <input id="searchInput" type="text" placeholder="Search batches...">
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Banner -->
+  <div class="hero-banner-rotating" id="rotatingBanner">
+    <div class="banner-slide" id="bannerSlide"></div>
+    <div class="banner-indicators" id="bannerDots"></div>
+  </div>
+
+
+  <!-- Info Cards -->
+  <div class="section">
+    <div class="info-card">
+      <span style="font-size:40px;">🏆</span>
+      <div>
+        <h3>India's Most Trusted Coaching</h3>
+        <p>1 Year of Excellence • 0 Selections in IIT/NIT/AIIMS</p>
+        <button id="helpBtn" style="background:#e53935; color:#fff; border:none; padding:8px 20px; border-radius:30px; font-weight:bold;">Free Counselling →</button>
+      </div>
+    </div>
+
+    <div class="alert-card">
+      <i class="fab fa-telegram" style="font-size:28px; color:#e53935;"></i>
+      <h3>📢 Join our Official Updates</h3>
+      <p>Get free notes, live sessions & exam alerts</p>
+
+      <button class="telegram-btn" id="tgMain"><i class="fab fa-telegram"></i> Main Channel</button>
+      <button class="telegram-btn" id="tgBackup" style="background:#f5a623;"><i class="fab fa-telegram"></i> Backup Channel</button>
+    </div>
+
+    <h3 style="margin:12px 0 8px; font-size:24px;">🔥 Our Premium Batches</h3>
+    <div id="coursesGrid" class="courses-grid-container"></div>
+
+  </div>
+
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-logo">MISSION <span style="background:#e53935; padding:2px 6px; border-radius:4px;">JEET</span></div>
+    <div style="font-size:12px; color:#888;">© MISSION JEET All Right Reserved, 2026</div>
+  </div>
+
+</div>
+
+<script>
+
+const coursesData = [
+  {
+    id: "drona_jee_11",
+    name: "🏅 DRONA JEE (Class 11th)",
+    grade: "Class 11th | JEE Advanced",
+    oldPrice: 5999,
+    price: 0,
+    validity: "786 days",
+    thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4yCGnkrjiyDYUJhNOcqUPVUg2VAx09p_fxA&s",
+  },
+  {
+    id: "drona_neet_11",
+    name: "🩺 DRONA NEET (Class 11th)",
+    grade: "Class 11th | NEET UG",
+    oldPrice: 5999,
+    price: 0,
+    validity: "786 days",
+    thumbnail: "https://dulae92u7241v.cloudfront.net/1772100600/admin_v2/metaGallery//50810_1_3442868_131_drona%20neet%20banner%20app.jpg",
+  }
+];
+
+const bannerItems = [
+  {
+    classTag: "🔥 LIMITED SEATS 🔥",
+    title: "DRONA JEE",
+    subtitle: "IIT-JEE 2028 Batch",
+    oldPrice: "₹5999",
+    newPrice: "₹0",
+    batchId: "drona_jee_11",
+    bgImage: "https://dulae92u7241v.cloudfront.net/1772100600/admin_v2/metaGallery//1025998_1_2679626_131_drona%20jee%20banner%20website.jpg",
+  },
+  {
+    classTag: "🎯 DREAM OF AIIMS?",
+    title: "DRONA NEET",
+    subtitle: "NEET 2028 Target Batch",
+    oldPrice: "₹5999",
+    newPrice: "₹0",
+    batchId: "drona_neet_11",
+    bgImage: "https://dulae92u7241v.cloudfront.net/1772100600/admin_v2/metaGallery//703442_1_147818_131_drona%20neet%20banner%20website.jpg",
+  }
+];
+
+let currentBannerIndex = 0;
+
+function renderBanner(index) {
+  const item = bannerItems[index];
+  const slide = document.getElementById("bannerSlide");
+  slide.style.backgroundImage = `url('${item.bgImage}')`;
+  slide.innerHTML = `
+    <div class='banner-overlay'></div>
+    <div style='position:relative; z-index:2;'>
+      <div class='hero-class-tag'>${item.classTag}</div>
+      <div class='hero-title'>${item.title}</div>
+      <div class='hero-subtitle'>${item.subtitle}</div>
+    </div>
+    <div class='hero-price-card'>
+      <div class='old-price'>${item.oldPrice}</div>
+      <div class='new-price'>${item.newPrice}</div>
+    </div>
+  `;
+
+  const dots = document.getElementById("bannerDots");
+  dots.innerHTML = bannerItems.map((_, i) =>
+    `<div class='dot ${i === index ? "active-dot" : ""}' onclick='setBanner(${i})'></div>`
+  ).join("");
+}
+
+function setBanner(i) {
+  currentBannerIndex = i;
+  renderBanner(i);
+}
+
+setInterval(() => {
+  currentBannerIndex = (currentBannerIndex + 1) % bannerItems.length;
+  renderBanner(currentBannerIndex);
+}, 3000);
+
+renderBanner(0);
+
+
+// COURSES
+function renderCourses() {
+  const grid = document.getElementById("coursesGrid");
+  grid.innerHTML = coursesData.map(course => `
+    <div class="course-card">
+      <div class="course-banner" style="background-image:url('${course.thumbnail}')">
+        <span class="course-badge">${course.grade}</span>
+        <div class="course-price-tag"><span class="old-price">₹${course.oldPrice}</span><br><span class="new-price">₹${course.price}</span></div>
+      </div>
+      <div class="course-info">
+        <div class="course-title">${course.name}</div>
+        <div class="course-validity"><i class="far fa-calendar-alt"></i> ${course.validity}</div>
+      </div>
+    </div>
+  `).join("");
+}
+
+renderCourses();
+
+</script>
+
+// Disable right click
+document.addEventListener("contextmenu", e => e.preventDefault());
+
+// Disable text selection
+document.addEventListener("selectstart", e => e.preventDefault());
+
+// Disable dragging
+document.addEventListener("dragstart", e => e.preventDefault());
+
+// Block keys (F12, Ctrl+Shift+I/J/C/U)
+document.addEventListener("keydown", e => {
+  if (
+    e.key === "F12" ||
+    (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key.toUpperCase())) ||
+    (e.ctrlKey && e.key.toUpperCase() === "U")
+  ) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+});
+</script>
+</body>
+</html>
