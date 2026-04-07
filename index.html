@@ -4,417 +4,356 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mission JEET · Premium Batches</title>
+<title>Mission JEET – Coaching India</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-  *{margin:0;padding:0;box-sizing:border-box;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Nunito',sans-serif;
+  background:#f5f6fa;
+  color:#111;
+}
 
-  body{
-    font-family:'Nunito',sans-serif;
-    background:#eef1f7;
-    color:#1a1a1a;
-  }
+/* HEADER */
+.header{
+  width:100%;
+  background:#0d1b3d;
+  padding:12px 32px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  box-shadow:0 3px 12px rgba(0,0,0,0.25);
+  position:sticky;
+  top:0;
+  z-index:50;
+}
 
-  /* HEADER */
-  .header{
-    background:#0a0a0a;
-    padding:18px 22px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-  }
-  .logo-wrap{
-    display:flex;
-    align-items:center;
-    gap:12px;
-  }
-  .logo-img{
-    width:50px;
-    height:50px;
-    border-radius:50%;
-    object-fit:cover;
-  }
-  .logo-title{
-    font-family:'Rajdhani',sans-serif;
-    font-size:28px;
-    font-weight:700;
-    color:#fff;
-    line-height:1;
-  }
-  .logo-sub{
-    font-size:12px;
-    color:#ffb57d;
-    margin-top:-4px;
-  }
+/* LOGO */
+.header-left{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.header-left img{
+  width:55px;
+  height:55px;
+  border-radius:6px;
+  object-fit:cover;
+  box-shadow:0 0 12px rgba(255,215,0,0.3);
+}
 
-  .search-box{
-    background:#fff;
-    display:flex;
-    align-items:center;
-    gap:8px;
-    padding:8px 14px;
-    border-radius:30px;
-  }
-  .search-box input{
-    border:none;
-    outline:none;
-    background:transparent;
-    font-size:14px;
-  }
+/* RIGHT SIDE: SEARCH + BUTTON */
+.header-right{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.search-box{
+  display:flex;
+  align-items:center;
+  background:white;
+  padding:8px 14px;
+  border-radius:30px;
+  gap:8px;
+  width:220px;
+}
+.search-box input{
+  border:none;
+  outline:none;
+  font-size:14px;
+  width:100%;
+}
+.header-btn{
+  background:#ffd449;
+  color:#0d1b3d;
+  padding:8px 16px;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  font-weight:700;
+  transition:.2s;
+}
+.header-btn:hover{opacity:.85;}
 
-  /* HERO BANNER */
-  .banner{
-    margin:18px auto;
-    width:92%;
-    height:210px;
-    border-radius:26px;
-    overflow:hidden;
-    box-shadow:0 12px 25px rgba(0,0,0,0.2);
-    position:relative;
-    cursor:pointer;
-  }
-  .banner-slide{
-    width:100%;
-    height:100%;
-    background-size:cover;
-    background-position:center;
-    position:relative;
-  }
-  .banner-overlay{
-    position:absolute;
-    top:0;left:0;right:0;bottom:0;
-    background:linear-gradient(90deg,rgba(0,0,0,.7),rgba(0,0,0,.3));
-  }
-  .banner-content{
-    position:absolute;
-    left:20px;
-    bottom:20px;
-    color:#fff;
-  }
-  .tag{
-    background:#ffcc66;
-    padding:4px 10px;
-    border-radius:20px;
-    color:#000;
-    font-weight:700;
-    font-size:12px;
-  }
-  .b-title{
-    font-family:'Rajdhani',sans-serif;
-    font-size:34px;
-    font-weight:800;
-    margin-top:4px;
-  }
-  .b-sub{
-    font-size:18px;
-    color:#ffeaaa;
-  }
-  .price-box{
-    position:absolute;
-    right:20px;
-    bottom:20px;
-    background:#fff;
-    padding:10px 16px;
-    border-radius:16px;
-    text-align:center;
-  }
-  .old{font-size:12px;text-decoration:line-through;color:#d22;}
-  .new{font-size:22px;font-weight:800;}
+/* BANNER ROTATOR */
+.hero-banner{
+  width:90%;
+  margin:22px auto;
+  height:240px;
+  border-radius:22px;
+  overflow:hidden;
+  position:relative;
+  box-shadow:0 6px 18px rgba(0,0,0,0.2);
+}
+.banner-slide{
+  width:100%;
+  height:100%;
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  padding:20px;
+  position:relative;
+}
+.banner-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,rgba(0,0,0,0.7),rgba(0,0,0,0.2));
+}
+.banner-left{color:white;position:relative;}
+.banner-title{
+  font-size:36px;
+  font-family:'Rajdhani';
+  font-weight:800;
+}
+.banner-sub{
+  font-size:18px;
+  color:#ffd449;
+}
+.banner-price{
+  position:relative;
+  background:white;
+  padding:10px 16px;
+  border-radius:12px;
+  box-shadow:0 0 10px rgba(0,0,0,.2);
+  text-align:center;
+}
+.banner-price .old{
+  text-decoration:line-through;
+  color:#e53935;
+  font-size:12px;
+}
+.banner-price .new{
+  font-size:22px;
+  font-weight:900;
+  color:#0d1b3d;
+}
+.banner-dots{
+  position:absolute;
+  bottom:12px;
+  left:0;right:0;
+  display:flex;
+  justify-content:center;
+  gap:10px;
+}
+.dot{
+  width:10px;height:10px;
+  border-radius:10px;
+  background:rgba(255,255,255,0.6);
+}
+.dot.active{
+  width:26px;
+  background:#ffd449;
+}
 
-  .dots{
-    position:absolute;
-    bottom:6px;
-    left:50%;
-    transform:translateX(-50%);
-    display:flex;
-    gap:8px;
-  }
-  .dot{
-    width:8px;height:8px;
-    background:#fff6;
-    border-radius:10px;
-    cursor:pointer;
-    transition:0.25s;
-  }
-  .dot.active{
-    width:26px;
-    background:#ffcc66;
-  }
-
-  /* INFO CARD */
-  .info-card{
-    margin:20px;
-    background:linear-gradient(135deg,#e3f8f3,#c8ebe4);
-    border-radius:22px;
-    padding:18px;
-    display:flex;
-    gap:14px;
-    align-items:center;
-  }
-
-  .alert-card{
-    margin:20px;
-    background:#fff3e0;
-    border-radius:22px;
-    padding:20px;
-    text-align:center;
-    border-left:4px solid #e53935;
-  }
-
-  .tg-btn{
-    background:#e53935;
-    border:none;
-    color:#fff;
-    width:100%;
-    padding:10px;
-    border-radius:32px;
-    margin-top:10px;
-    font-weight:700;
-    cursor:pointer;
-  }
-
-  .courses-title{
-    font-size:22px;
-    margin:12px 20px;
-    font-weight:800;
-  }
-
-  /* GRID */
+/* BATCHES */
+.section{
+  width:90%;
+  margin:24px auto;
+}
+.section h2{
+  font-size:26px;
+  margin-bottom:16px;
+  font-weight:800;
+  color:#0d1b3d;
+}
+.grid{
+  display:grid;
+  gap:20px;
+}
+@media(min-width:768px){
   .grid{
-    padding:0 20px;
-    display:grid;
-    gap:18px;
+    grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
   }
-  @media(min-width:768px){
-    .grid{
-      grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
-    }
-  }
+}
+.card{
+  background:white;
+  border-radius:18px;
+  box-shadow:0 4px 16px rgba(0,0,0,0.1);
+  overflow:hidden;
+  cursor:pointer;
+  transition:.2s;
+}
+.card:hover{transform:translateY(-4px);}
+.card-banner{
+  height:150px;
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  padding:14px;
+  position:relative;
+}
+.card-badge{
+  background:rgba(0,0,0,0.65);
+  padding:4px 12px;
+  border-radius:8px;
+  font-size:13px;
+  color:#ffd449;
+}
+.card-price{
+  background:white;
+  border-radius:10px;
+  padding:4px 10px;
+  font-size:13px;
+  text-align:center;
+}
+.card-price .old{
+  color:#e53935;
+  text-decoration:line-through;
+}
+.card-price .new{
+  font-size:16px;
+  color:#0d1b3d;
+  font-weight:800;
+}
+.card-content{padding:16px;}
+.card-title{
+  font-size:18px;
+  font-weight:800;
+  margin-bottom:6px;
+}
+.card-validity{
+  font-size:13px;
+  color:#555;
+}
 
-  .card{
-    background:#fff;
-    border-radius:20px;
-    box-shadow:0 6px 16px rgba(0,0,0,0.08);
-    cursor:pointer;
-    overflow:hidden;
-  }
-  .thumb{
-    height:150px;
-    background-size:cover;
-    background-position:center;
-    position:relative;
-  }
-  .badge{
-    position:absolute;
-    top:12px;
-    left:12px;
-    background:rgba(0,0,0,0.6);
-    padding:4px 12px;
-    border-radius:14px;
-    color:#ffeaa7;
-    font-size:12px;
-  }
-  .price{
-    position:absolute;
-    bottom:10px;
-    right:12px;
-    background:#fff;
-    padding:6px 12px;
-    border-radius:12px;
-  }
-
-  .card-body{
-    padding:14px;
-  }
-
-  /* FOOTER */
-  .footer{
-    text-align:center;
-    padding:30px;
-    margin-top:40px;
-    background:#0a0a0a;
-    color:#ccc;
-  }
-
+/* FOOTER */
+.footer{
+  margin-top:40px;
+  text-align:center;
+  padding:24px;
+  background:#0d1b3d;
+  color:#fff;
+  font-size:13px;
+}
 </style>
 </head>
+
 <body>
 
 <!-- HEADER -->
-<div class="header">
-  <div class="logo-wrap">
-    <img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/ff/ed/33/ffed33f9-6031-1eee-7a0d-d870dee9573e/Placeholder.mill/1200x630wa.jpg" class="logo-img">
-    <div>
-      <div class="logo-title">MISSION JEET</div>
-      <div class="logo-sub">India’s Trusted Coaching</div>
-    </div>
+<header class="header">
+  <div class="header-left">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/ff/ed/33/ffed33f9-6031-1eee-7a0d-d870dee9573e/Placeholder.mill/1200x630wa.jpg">
   </div>
 
-  <div class="search-box">
-    <i class="fa fa-search"></i>
-    <input type="text" id="searchInput" placeholder="Search batches...">
+  <div class="header-right">
+    <div class="search-box">
+      <i class="fa fa-search"></i>
+      <input id="searchInput" placeholder="Search batches…">
+    </div>
+    <button class="header-btn">Help</button>
   </div>
-</div>
+</header>
 
 <!-- ROTATING BANNER -->
-<div class="banner" id="bannerBox">
-  <div class="banner-slide" id="bannerSlide"></div>
-  <div class="banner-overlay"></div>
-  <div class="banner-content" id="bannerContent"></div>
-  <div class="price-box" id="priceBox"></div>
-  <div class="dots" id="dots"></div>
+<div class="hero-banner">
+  <div id="bannerSlide" class="banner-slide"></div>
+  <div id="bannerDots" class="banner-dots"></div>
 </div>
 
-<!-- INFO -->
-<div class="info-card">
-  <span style="font-size:40px;">🏆</span>
-  <div>
-    <h3>India's Most Trusted Coaching</h3>
-    <p>15+ Years of Excellence • 5000+ Top Selections</p>
-  </div>
+<!-- BATCHES -->
+<div class="section">
+  <h2>Our Premium Batches</h2>
+  <div id="grid" class="grid"></div>
 </div>
-
-<!-- ALERT -->
-<div class="alert-card">
-  <i class="fab fa-telegram" style="font-size:30px;color:#e53935;"></i>
-  <h3>Join Official Updates</h3>
-  <button class="tg-btn" onclick="window.open('https://t.me/missionjeet_official')">Main Channel</button>
-</div>
-
-<h3 class="courses-title">🔥 Our Premium Batches</h3>
-<div class="grid" id="courseGrid"></div>
 
 <!-- FOOTER -->
-<div class="footer">
-  © Mission JEET · All Rights Reserved 2026
-</div>
+<footer class="footer">
+  © Mission JEET 2026
+</footer>
 
+<!-- SCRIPT -->
 <script>
-/* COURSE DATA */
-const courses = [
+// BANNERS
+const banners=[
   {
-    id:"jee11",
-    name:"🏅 DRONA JEE (Class 11)",
-    grade:"JEE 2028",
+    title:"DRONA JEE",
+    sub:"IIT-JEE 2028 Batch",
+    old:"₹5999",
+    new:"₹0",
+    img:"https://dulae92u7241v.cloudfront.net/1772100600/admin_v2/metaGallery//1025998_1_2679626_131_drona%20jee%20banner%20website.jpg"
+  },
+  {
+    title:"DRONA NEET",
+    sub:"NEET 2028 Batch",
+    old:"₹5999",
+    new:"₹0",
+    img:"https://dulae92u7241v.cloudfront.net/1772100600/admin_v2/metaGallery//703442_1_147818_131_drona%20neet%20banner%20website.jpg"
+  }
+];
+
+let i=0;
+function loadBanner(){
+  const b=banners[i];
+  const slide=document.getElementById("bannerSlide");
+  slide.style.backgroundImage=`url(${b.img})`;
+  slide.innerHTML=`
+    <div class="banner-overlay"></div>
+    <div class="banner-left">
+      <div class="banner-title">${b.title}</div>
+      <div class="banner-sub">${b.sub}</div>
+    </div>
+    <div class="banner-price">
+      <div class="old">${b.old}</div>
+      <div class="new">${b.new}</div>
+    </div>`;
+  const dots=document.getElementById("bannerDots");
+  dots.innerHTML=banners.map((_,d)=>`
+    <div class="dot ${d===i?'active':''}"></div>
+  `).join("");
+}
+setInterval(()=>{i=(i+1)%banners.length;loadBanner();},3000);
+loadBanner();
+
+// BATCHES
+const courses=[
+  {
+    name:"DRONA JEE (Class 11)",
+    grade:"JEE Advanced • Class 11",
     old:5999,
     price:0,
     validity:"786 days",
     img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4yCGnkrjiyDYUJhNOcqUPVUg2VAx09p_fxA&s"
   },
   {
-    id:"neet11",
-    name:"🩺 DRONA NEET (Class 11)",
-    grade:"NEET 2028",
+    name:"DRONA NEET (Class 11)",
+    grade:"NEET UG • Class 11",
     old:5999,
     price:0,
     validity:"786 days",
-    img:"https://dulae92u7241v.cloudfront.net/1772100600/admin_v2/metaGallery//703442_1_147818_131_drona%20neet%20banner%20website.jpg"
+    img:"https://dulae92u7241v.cloudfront.net/1772100600/admin_v2/metaGallery//50810_1_3442868_131_drona%20neet%20banner%20app.jpg"
   }
 ];
 
-/* BANNER ITEMS */
-const banners = [
-  {
-    tag:"LIMITED SEATS",
-    title:"DRONA JEE",
-    sub:"IIT-JEE 2028",
-    old:"₹5999",
-    price:"₹0",
-    img:"https://dulae92u7241v.cloudfront.net/1772100600/admin_v2/metaGallery//1025998_1_2679626_131_drona%20jee%20banner%20website.jpg"
-  },
-  {
-    tag:"DREAM OF AIIMS?",
-    title:"DRONA NEET",
-    sub:"NEET 2028",
-    old:"₹5999",
-    price:"₹0",
-    img:"https://dulae92u7241v.cloudfront.net/1772100600/admin_v2/metaGallery//703442_1_147818_131_drona%20neet%20banner%20website.jpg"
-  }
-];
-
-let index=0;
-
-/* RENDER BANNER */
-function loadBanner(){
-  const b=banners[index];
-  document.getElementById("bannerSlide").style.backgroundImage=`url(${b.img})`;
-
-  document.getElementById("bannerContent").innerHTML=`
-    <div class="tag">${b.tag}</div>
-    <div class="b-title">${b.title}</div>
-    <div class="b-sub">${b.sub}</div>
-  `;
-
-  document.getElementById("priceBox").innerHTML=`
-    <div class="old">${b.old}</div>
-    <div class="new">${b.price}</div>
-  `;
-
-  let dots="";
-  banners.forEach((_,i)=>dots+=`<div class="dot ${i==index?'active':''}" onclick="goto(${i})"></div>`);
-  document.getElementById("dots").innerHTML=dots;
-}
-
-function goto(i){
-  index=i;
-  loadBanner();
-}
-
-setInterval(()=>{
-  index=(index+1)%banners.length;
-  loadBanner();
-},3000);
-
-loadBanner();
-
-/* RENDER COURSES */
 function loadCourses(){
-  const box=document.getElementById("courseGrid");
-  box.innerHTML="";
-  courses.forEach(c=>{
-    box.innerHTML+=`
-      <div class="card">
-        <div class="thumb" style="background-image:url('${c.img}')">
-          <div class="badge">${c.grade}</div>
-          <div class="price"><span class="old">₹${c.old}</span><br><span class="new">₹${c.price}</span></div>
-        </div>
-        <div class="card-body">
-          <strong>${c.name}</strong>
-          <div style="font-size:12px;color:#555;margin-top:6px;">Validity: ${c.validity}</div>
+  document.getElementById("grid").innerHTML=courses.map(c=>`
+    <div class="card">
+      <div class="card-banner" style="background-image:url('${c.img}')">
+        <div class="card-badge">${c.grade}</div>
+        <div class="card-price">
+          <div class="old">₹${c.old}</div>
+          <div class="new">₹${c.price}</div>
         </div>
       </div>
-    `;
-  });
+      <div class="card-content">
+        <div class="card-title">${c.name}</div>
+        <div class="card-validity"><i class="fa fa-calendar"></i> Validity: ${c.validity}</div>
+      </div>
+    </div>
+  `).join("");
 }
 loadCourses();
 
-/* SEARCH */
-document.getElementById("searchInput").addEventListener("input",e=>{
-  const term=e.target.value.toLowerCase();
-  const box=document.getElementById("courseGrid");
-  box.innerHTML="";
-  courses
-    .filter(c=>c.name.toLowerCase().includes(term))
-    .forEach(c=>{
-      box.innerHTML+=`
-        <div class="card">
-          <div class="thumb" style="background-image:url('${c.img}')">
-            <div class="badge">${c.grade}</div>
-            <div class="price"><span class="old">₹${c.old}</span><br><span class="new">₹${c.price}</span></div>
-          </div>
-          <div class="card-body">
-            <strong>${c.name}</strong>
-            <div style="font-size:12px;color:#555;margin-top:6px;">Validity: ${c.validity}</div>
-          </div>
-        </div>
-      `;
-    });
-});
-
-/* SECURITY LOCK */
+/* ===============================
+      SECURITY LOCK SCRIPT
+=============================== */
 document.addEventListener("contextmenu",e=>e.preventDefault());
 document.addEventListener("selectstart",e=>e.preventDefault());
 document.addEventListener("dragstart",e=>e.preventDefault());
@@ -427,7 +366,7 @@ document.addEventListener("keydown",e=>{
     e.preventDefault();
     e.stopPropagation();
   }
-});
+}); 
 </script>
 
 </body>
