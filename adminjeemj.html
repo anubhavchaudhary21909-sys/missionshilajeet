@@ -1,0 +1,1662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Missionajeet — Admin · Lecture & PDF URL</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  /* Missionajeet Light Theme */
+  --bg: #f5f6fa;
+  --surface: #ffffff;
+  --card: #ffffff;
+  --card2: #f8f9fc;
+  --header-bg: #0d1b3d;
+  --primary-gold: #ffd449;
+  --free-badge: #ff8c42;
+  --border: rgba(13, 27, 61, 0.1);
+  --border2: rgba(255, 212, 73, 0.4);
+  --p1: #ffd449;
+  --p2: #ffc233;
+  --p3: #ffb01e;
+  --accent: #ff8c42;
+  --green: #10b981;
+  --red: #ef4444;
+  --amber: #f59e0b;
+  --text: #1a1f2e;
+  --text2: #4a5568;
+  --text3: #718096;
+  --r: 12px;
+  --r-lg: 18px;
+  --r-xl: 24px;
+  --sh-lg: 0 16px 56px rgba(13, 27, 61, 0.12);
+  --sh-card: 0 4px 12px rgba(13, 27, 61, 0.06);
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{-webkit-font-smoothing:antialiased;}
+body{
+  font-family: 'Nunito', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6,
+.wb-name, .sec-title, .sc-nm, .sp-h1, .ct-nm, .video-title, .pl-title,
+.l-title, .as-title, .db-title, .fp-title, .snm, .cnm {
+  font-family: 'Rajdhani', sans-serif !important;
+  font-weight: 700 !important;
+}
+
+body::before{
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 900px 600px at -5% -5%, rgba(255, 212, 73, 0.08) 0%, transparent 65%),
+              radial-gradient(ellipse 700px 500px at 105% 105%, rgba(255, 140, 66, 0.06) 0%, transparent 60%),
+              radial-gradient(ellipse 500px 400px at 55% 45%, rgba(255, 212, 73, 0.04) 0%, transparent 55%);
+}
+
+/* LOADER */
+#loader{
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  transition: opacity .5s,visibility .5s;
+}
+
+#loader.hide{opacity:0;visibility:hidden;pointer-events:none;}
+
+.ld-logo{
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 800;
+  font-size: 2rem;
+  letter-spacing: -.03em;
+  background: linear-gradient(135deg, var(--primary-gold), var(--free-badge));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.ld-bar{
+  width: 160px;
+  height: 2px;
+  background: rgba(255, 212, 73, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.ld-fill{
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--primary-gold), var(--free-badge));
+  animation: ldf 1.4s ease forwards;
+}
+
+@keyframes ldf{to{width:100%;}}
+
+.ld-hint{
+  font-size: .7rem;
+  color: var(--text3);
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  font-family: 'Nunito', sans-serif;
+}
+
+/* TOPBAR */
+#topbar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 500;
+  height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  background: var(--header-bg);
+  backdrop-filter: blur(24px) saturate(160%);
+  border-bottom: 1px solid rgba(255, 212, 73, 0.2);
+  box-shadow: 0 2px 8px rgba(13, 27, 61, 0.15);
+}
+
+.logo{
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 800;
+  font-size: 1.4rem;
+  letter-spacing: -.03em;
+  background: linear-gradient(135deg, var(--primary-gold), #ffeaa3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.logo-box{
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, var(--primary-gold), var(--free-badge));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .9rem;
+  box-shadow: 0 4px 14px rgba(255, 212, 73, 0.5);
+}
+
+.logo-badge{
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: var(--amber);
+  font-size: .62rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-family: 'Rajdhani', sans-serif;
+  letter-spacing: .08em;
+  -webkit-text-fill-color: var(--amber);
+}
+
+.tright{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#adminEmail{
+  font-size: .78rem;
+  color: #ffeaa3;
+  background: rgba(255, 212, 73, 0.1);
+  border: 1px solid rgba(255, 212, 73, 0.2);
+  padding: 4px 11px;
+  border-radius: var(--r);
+  font-family: 'Nunito', sans-serif;
+}
+
+#logoutBtn{
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  color: #fca5a5;
+  padding: 7px 13px;
+  border-radius: var(--r);
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  font-size: .77rem;
+  font-weight: 600;
+  transition: all .2s;
+}
+
+#logoutBtn:hover{
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+/* PAGES */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(24px);}
+  to{opacity:1;transform:none;}
+}
+
+.page{
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  padding-top: 62px;
+  display: none;
+}
+
+.page.active{display: block;}
+
+#loginPage{
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+}
+
+#loginPage.active{display: flex;}
+
+#adminPage{display: none;}
+
+#adminPage.active{
+  display: flex;
+  min-height: calc(100vh - 62px);
+}
+
+/* LOGIN */
+.lc{
+  width: 100%;
+  max-width: 432px;
+  animation: fadeUp .5s cubic-bezier(.16,1,.3,1) both;
+}
+
+.lcard{
+  background: var(--card);
+  border: 1px solid var(--border2);
+  border-radius: var(--r-xl);
+  padding: 48px 44px;
+  box-shadow: var(--sh-lg), 0 0 60px rgba(255, 212, 73, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.lcard::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--primary-gold), var(--free-badge), transparent);
+}
+
+.lhead{
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.l-icon{
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  margin: 0 auto 14px;
+  background: linear-gradient(135deg, var(--amber), #d97706);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.4);
+}
+
+.l-title{
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.65rem;
+  font-weight: 800;
+  letter-spacing: -.02em;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.l-badge{
+  display: inline-block;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  color: var(--amber);
+  font-size: .7rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: .08em;
+  margin-bottom: 6px;
+  font-family: 'Nunito', sans-serif;
+}
+
+.l-sub{
+  font-size: .82rem;
+  color: var(--text3);
+  font-family: 'Nunito', sans-serif;
+}
+
+.fg{
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-bottom: 14px;
+}
+
+.fl{
+  font-size: .69rem;
+  font-weight: 700;
+  color: var(--text3);
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  font-family: 'Nunito', sans-serif;
+}
+
+.fi{
+  width: 100%;
+  padding: 11px 13px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  color: var(--text);
+  font-family: 'Nunito', sans-serif;
+  font-size: .9rem;
+  outline: none;
+  transition: all .2s;
+  -webkit-appearance: none;
+}
+
+.fi::placeholder{color: var(--text3);}
+
+.fi:focus{
+  border-color: var(--primary-gold);
+  box-shadow: 0 0 0 3px rgba(255, 212, 73, 0.12);
+  background: var(--surface);
+}
+
+.fi option{background: var(--surface);}
+
+.bsignin{
+  width: 100%;
+  padding: 13px;
+  margin-top: 4px;
+  background: linear-gradient(135deg, var(--primary-gold), var(--free-badge));
+  border: none;
+  border-radius: var(--r);
+  color: var(--text);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: .97rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all .22s;
+  box-shadow: 0 6px 22px rgba(255, 212, 73, 0.4);
+}
+
+.bsignin:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(255, 212, 73, 0.55);
+}
+
+.bsignin:disabled{
+  opacity: .5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+#loginError{
+  display: none;
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: var(--r);
+  color: var(--red);
+  font-size: .8rem;
+  text-align: center;
+  font-family: 'Nunito', sans-serif;
+}
+
+.lfoot{
+  text-align: center;
+  margin-top: 20px;
+  font-size: .78rem;
+  color: var(--text3);
+  font-family: 'Nunito', sans-serif;
+}
+
+.lfoot a{
+  color: var(--free-badge);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* ADMIN SIDEBAR */
+.adm-sidebar{
+  width: 240px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 62px;
+  height: calc(100vh - 62px);
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  padding: 20px 12px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: var(--sh-card);
+}
+
+.as-head{
+  padding: 0 10px 16px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 8px;
+}
+
+.as-title{
+  font-family: 'Rajdhani', sans-serif;
+  font-size: .92rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+
+.as-sub{
+  font-size: .7rem;
+  color: var(--text3);
+  font-family: 'Nunito', sans-serif;
+}
+
+.as-nav-item{
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 11px;
+  border-radius: var(--r);
+  cursor: pointer;
+  transition: all .17s;
+  color: var(--text2);
+  font-size: .83rem;
+  font-weight: 500;
+  border: 1px solid transparent;
+  font-family: 'Nunito', sans-serif;
+}
+
+.as-nav-item:hover{
+  background: rgba(255, 212, 73, 0.1);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.as-nav-item.active{
+  background: linear-gradient(135deg, rgba(255, 212, 73, 0.15), rgba(255, 140, 66, 0.08));
+  border-color: var(--border2);
+  color: var(--text);
+}
+
+.as-em{
+  font-size: .95rem;
+  width: 20px;
+  text-align: center;
+}
+
+.as-bottom{
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+.as-ucard{
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px;
+  border-radius: var(--r);
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+
+.as-uav{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--amber), #d97706);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .7rem;
+  font-weight: 700;
+  color: var(--text);
+  flex-shrink: 0;
+}
+
+.as-unm{
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: 'Nunito', sans-serif;
+}
+
+.as-urole{
+  font-size: .65rem;
+  color: var(--amber);
+  font-family: 'Nunito', sans-serif;
+}
+
+/* ADMIN MAIN */
+.adm-main{
+  flex: 1;
+  min-width: 0;
+  padding: 28px 30px 60px;
+}
+
+.stats-row{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.stat-chip{
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 18px 20px;
+  position: relative;
+  overflow: hidden;
+  animation: fadeUp .4s cubic-bezier(.16,1,.3,1) both;
+  box-shadow: var(--sh-card);
+}
+
+.stat-chip::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+}
+
+.stat-chip.s::before{background: linear-gradient(90deg, var(--primary-gold), var(--free-badge));}
+.stat-chip.c::before{background: linear-gradient(90deg, var(--free-badge), #ff6b35);}
+.stat-chip.v::before{background: linear-gradient(90deg, var(--primary-gold), var(--p3));}
+
+.sc-val{
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -.03em;
+  margin-bottom: 2px;
+}
+
+.sc-val.s{
+  background: linear-gradient(135deg, var(--primary-gold), var(--free-badge));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sc-val.c{
+  background: linear-gradient(135deg, var(--free-badge), #ff6b35);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sc-val.v{
+  background: linear-gradient(135deg, var(--primary-gold), var(--p3));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sc-lbl{
+  font-size: .71rem;
+  color: var(--text3);
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  font-family: 'Nunito', sans-serif;
+}
+
+.sec-head{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.sec-title{
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.02rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text);
+}
+
+.sec-title::before{
+  content: '';
+  width: 3px;
+  height: 15px;
+  background: linear-gradient(to bottom, var(--primary-gold), var(--free-badge));
+  border-radius: 2px;
+}
+
+.forms-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.fpanel{
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 22px;
+  animation: fadeUp .4s cubic-bezier(.16,1,.3,1) both;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: var(--sh-card);
+}
+
+.fp-head{
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.fp-ic{
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .85rem;
+}
+
+.fp-ic.s{background: linear-gradient(135deg, var(--primary-gold), var(--free-badge));}
+.fp-ic.c{background: linear-gradient(135deg, var(--free-badge), #ff6b35);}
+.fp-ic.v{background: linear-gradient(135deg, var(--primary-gold), var(--p3));}
+
+.fp-title{
+  font-family: 'Rajdhani', sans-serif;
+  font-size: .9rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.badd{
+  width: 100%;
+  padding: 10px;
+  background: linear-gradient(135deg, var(--primary-gold), var(--free-badge));
+  border: none;
+  border-radius: var(--r);
+  color: var(--text);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: .85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all .2s;
+  box-shadow: 0 4px 16px rgba(255, 212, 73, 0.3);
+  margin-top: 2px;
+}
+
+.badd:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(255, 212, 73, 0.45);
+}
+
+.badd:disabled{
+  opacity: .45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* THUMBNAIL UPLOAD + URL fields */
+.thumb-upload-area{
+  width: 100%;
+  border: 2px dashed var(--border2);
+  border-radius: var(--r);
+  background: var(--bg);
+  cursor: pointer;
+  transition: all .22s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px;
+  min-height: 90px;
+  position: relative;
+  overflow: hidden;
+}
+
+.thumb-upload-area:hover{
+  border-color: var(--primary-gold);
+  background: rgba(255, 212, 73, 0.05);
+}
+
+.thumb-upload-area.has-img{
+  padding: 0;
+  border-style: solid;
+}
+
+.thumb-upload-area.uploading{
+  border-color: var(--primary-gold);
+  animation: thumbpulse 1s ease infinite;
+}
+
+@keyframes thumbpulse{
+  0%, 100%{border-color: var(--primary-gold);}
+  50%{border-color: var(--free-badge);}
+}
+
+.thumb-upload-area img{
+  width: 100%;
+  height: 90px;
+  object-fit: cover;
+  border-radius: calc(var(--r) - 2px);
+  display: block;
+}
+
+.thumb-upload-overlay{
+  position: absolute;
+  inset: 0;
+  background: rgba(13, 27, 61, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity .2s;
+  border-radius: calc(var(--r) - 2px);
+}
+
+.thumb-upload-area.has-img:hover .thumb-upload-overlay{opacity: 1;}
+
+.thumb-upload-overlay span{
+  font-size: .72rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: .06em;
+}
+
+.thumb-upload-ic{
+  font-size: 1.4rem;
+  opacity: .5;
+}
+
+.thumb-upload-txt{
+  font-size: .72rem;
+  color: var(--text3);
+  text-align: center;
+  line-height: 1.4;
+  font-family: 'Nunito', sans-serif;
+}
+
+.thumb-upload-prog{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary-gold), var(--free-badge));
+  transition: width .3s;
+  border-radius: 0 0 var(--r) var(--r);
+}
+
+.thumb-hidden-input{display: none;}
+
+.thumb-status{
+  font-size: .68rem;
+  color: var(--green);
+  display: none;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Nunito', sans-serif;
+}
+
+.thumb-status.show{display: flex;}
+.thumb-status.err{color: var(--red);}
+
+.url-hint{
+  font-size: .65rem;
+  color: var(--text3);
+  margin-top: -5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Nunito', sans-serif;
+}
+
+.url-hint i{font-size: .8rem;}
+
+/* DB Tree */
+.db-panel{
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 22px;
+  animation: fadeUp .4s cubic-bezier(.16,1,.3,1) both;
+  animation-delay: .1s;
+  box-shadow: var(--sh-card);
+}
+
+.db-panel-head{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.db-title{
+  font-family: 'Rajdhani', sans-serif;
+  font-size: .95rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text);
+}
+
+.live-pill{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  padding: 3px 9px;
+  border-radius: 20px;
+  font-size: .67rem;
+  color: var(--green);
+  font-weight: 600;
+  letter-spacing: .06em;
+  font-family: 'Nunito', sans-serif;
+}
+
+.live-dot{
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 6px var(--green);
+  animation: pulse 1.5s ease infinite;
+}
+
+@keyframes pulse{
+  0%, 100%{opacity: 1;}
+  50%{opacity: .3;}
+}
+
+.snode{
+  background: rgba(255, 212, 73, 0.05);
+  border: 1px solid rgba(255, 212, 73, 0.2);
+  border-radius: var(--r);
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.srow{
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: background .18s;
+}
+
+.srow:hover{background: rgba(255, 212, 73, 0.08);}
+
+.sleft{
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.sic-thumb{
+  width: 40px;
+  height: 40px;
+  border-radius: 9px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+}
+
+.sic{
+  width: 40px;
+  height: 40px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, var(--primary-gold), var(--free-badge));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .95rem;
+  flex-shrink: 0;
+}
+
+.cic-thumb{
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+}
+
+.cic{
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--free-badge), #ff6b35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .75rem;
+  flex-shrink: 0;
+}
+
+.vic-thumb{
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+}
+
+.vic{
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  background: linear-gradient(135deg, var(--primary-gold), var(--p3));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .65rem;
+  flex-shrink: 0;
+}
+
+.snm{
+  font-family: 'Rajdhani', sans-serif;
+  font-size: .87rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.smt{
+  font-size: .7rem;
+  color: var(--text3);
+  font-family: 'Nunito', sans-serif;
+}
+
+.sacts{
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.tarr{
+  color: var(--free-badge);
+  font-size: .8rem;
+  transition: transform .2s;
+}
+
+.snode.open .tarr{transform: rotate(90deg);}
+
+.bdel{
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  color: var(--red);
+  padding: 4px 10px;
+  border-radius: 7px;
+  font-size: .68rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Rajdhani', sans-serif;
+  transition: all .15s;
+}
+
+.bdel:hover{
+  background: rgba(239, 68, 68, 0.2);
+}
+
+.bdel-sm{
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.18);
+  color: var(--red);
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: .65rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Rajdhani', sans-serif;
+  transition: all .15s;
+  flex-shrink: 0;
+}
+
+.bdel-sm:hover{
+  background: rgba(239, 68, 68, 0.2);
+}
+
+.cbox{
+  padding: 0 14px 12px;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.snode.open .cbox{display: flex;}
+
+.cnode{
+  background: rgba(255, 140, 66, 0.05);
+  border: 1px solid rgba(255, 140, 66, 0.15);
+  border-radius: var(--r);
+  overflow: hidden;
+}
+
+.crow{
+  padding: 10px 13px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: background .18s;
+}
+
+.crow:hover{background: rgba(255, 140, 66, 0.07);}
+
+.cleft{
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.cnm{
+  font-family: 'Rajdhani', sans-serif;
+  font-size: .83rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.cmt{
+  font-size: .67rem;
+  color: var(--text3);
+  font-family: 'Nunito', sans-serif;
+}
+
+.cacts{
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.carr{
+  color: var(--free-badge);
+  font-size: .75rem;
+  transition: transform .2s;
+}
+
+.cnode.open .carr{transform: rotate(90deg);}
+
+.vbox{
+  padding: 0 13px 10px;
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cnode.open .vbox{display: flex;}
+
+.vrow-admin{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 11px;
+  background: rgba(255, 212, 73, 0.06);
+  border: 1px solid rgba(255, 212, 73, 0.14);
+  border-radius: 9px;
+}
+
+.vleft{
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.vnm{
+  font-size: .8rem;
+  font-weight: 500;
+  color: var(--text);
+  font-family: 'Nunito', sans-serif;
+}
+
+.vurl{
+  font-size: .67rem;
+  color: var(--free-badge);
+  text-decoration: none;
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: 'Nunito', sans-serif;
+}
+
+.vurl:hover{text-decoration: underline;}
+
+.empty-st{
+  text-align: center;
+  padding: 28px;
+  color: var(--text3);
+  font-family: 'Nunito', sans-serif;
+}
+
+.empty-st-ic{
+  font-size: 2rem;
+  opacity: .25;
+  margin-bottom: 8px;
+}
+
+.empty-st-tx{font-size: .83rem;}
+
+/* TOAST */
+#toast{
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9998;
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: var(--r);
+  padding: 12px 18px;
+  font-size: .82rem;
+  color: var(--text);
+  box-shadow: var(--sh-lg);
+  transform: translateY(14px) scale(.97);
+  opacity: 0;
+  transition: all .3s cubic-bezier(.16,1,.3,1);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  max-width: 300px;
+  font-family: 'Nunito', sans-serif;
+}
+
+#toast.show{
+  transform: none;
+  opacity: 1;
+}
+
+#toast.success .tdot{
+  background: var(--green);
+  box-shadow: 0 0 8px var(--green);
+}
+
+#toast.error .tdot{
+  background: var(--red);
+  box-shadow: 0 0 8px var(--red);
+}
+
+.tdot{
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: var(--text3);
+}
+
+::-webkit-scrollbar{width: 4px;}
+::-webkit-scrollbar-thumb{
+  background: rgba(255, 212, 73, 0.3);
+  border-radius: 2px;
+}
+
+@media(max-width:1100px){.forms-grid{grid-template-columns: 1fr 1fr;}}
+@media(max-width:768px){
+  #topbar{padding: 0 14px;}
+  .adm-sidebar{display: none;}
+  .adm-main{padding: 18px 14px 40px;}
+  .stats-row{grid-template-columns: 1fr 1fr 1fr;}
+  #adminEmail{display: none;}
+}
+@media(max-width:700px){.forms-grid{grid-template-columns: 1fr;}}
+@media(max-width:500px){.stats-row{grid-template-columns: 1fr;}}
+</style>
+</head>
+<body>
+
+<div id="loader">
+  <div class="ld-logo">Missionajeet</div>
+  <div class="ld-bar"><div class="ld-fill"></div></div>
+  <div class="ld-hint">Loading admin workspace</div>
+</div>
+<div id="toast"><div class="tdot"></div><span id="tmsg"></span></div>
+
+<div id="topbar">
+  <div class="logo"><div class="logo-box">🎯</div>Missionajeet<span class="logo-badge">ADMIN</span></div>
+  <div class="tright" id="tright" style="display:none">
+    <span id="adminEmail"></span>
+    <button id="logoutBtn">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      Sign Out
+    </button>
+  </div>
+</div>
+
+<!-- LOGIN -->
+<div class="page" id="loginPage">
+  <div class="lc">
+    <div class="lcard">
+      <div class="lhead">
+        <div class="l-icon">🛡️</div>
+        <div class="l-badge">ADMIN ACCESS</div>
+        <div class="l-title">Welcome back</div>
+        <div class="l-sub">Sign in to manage your content</div>
+      </div>
+      <div class="fg"><label class="fl">Admin Email</label><input class="fi" type="email" id="loginEmail" placeholder="admin@missionajeet.com"/></div>
+      <div class="fg"><label class="fl">Password</label><input class="fi" type="password" id="loginPass" placeholder="Enter your password"/></div>
+      <button class="bsignin" id="loginBtn">Access Admin Panel →</button>
+      <div id="loginError"></div>
+      <div class="lfoot">Student? <a href="index.html">Go to Missionajeet Portal</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN PAGE -->
+<div class="page" id="adminPage">
+  <aside class="adm-sidebar">
+    <div class="as-head"><div class="as-title">Control Panel</div><div class="as-sub">Missionajeet Admin</div></div>
+    <div class="as-nav-item active"><span class="as-em">📊</span> Overview</div>
+    <div class="as-nav-item"><span class="as-em">📚</span> Subjects</div>
+    <div class="as-nav-item"><span class="as-em">📖</span> Chapters</div>
+    <div class="as-nav-item"><span class="as-em">🎬</span> Videos / PDF</div>
+    <div class="as-nav-item" onclick="window.open('index.html')"><span class="as-em">↗</span> Student View</div>
+    <div class="as-bottom">
+      <div class="as-ucard">
+        <div class="as-uav">A</div>
+        <div><div class="as-unm" id="sidebarAdminName">Admin</div><div class="as-urole">Administrator</div></div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="adm-main">
+    <!-- Stats -->
+    <div class="stats-row">
+      <div class="stat-chip s"><div class="sc-val s" id="statS">0</div><div class="sc-lbl">Subjects</div></div>
+      <div class="stat-chip c" style="animation-delay:.08s"><div class="sc-val c" id="statC">0</div><div class="sc-lbl">Chapters</div></div>
+      <div class="stat-chip v" style="animation-delay:.16s"><div class="sc-val v" id="statV">0</div><div class="sc-lbl">Videos/PDFs</div></div>
+    </div>
+
+    <!-- Forms -->
+    <div class="sec-head"><div class="sec-title">Add Content</div></div>
+    <div class="forms-grid">
+
+      <!-- Add Subject -->
+      <div class="fpanel" style="animation-delay:.05s">
+        <div class="fp-head"><div class="fp-ic s">📚</div><div class="fp-title">New Subject</div></div>
+        <div class="fg"><label class="fl">Subject Name</label><input class="fi" type="text" id="subjName" placeholder="e.g. Physics"/></div>
+        <div class="fg">
+          <label class="fl">Thumbnail Image</label>
+          <div class="thumb-upload-area" id="subjThumbArea">
+            <input type="file" accept="image/*" class="thumb-hidden-input" id="subjThumbFile"/>
+            <span class="thumb-upload-ic">🖼️</span>
+            <span class="thumb-upload-txt">Click to upload thumbnail<br/><span style="color:var(--free-badge);font-weight:600;">ImgBB upload</span></span>
+            <div class="thumb-upload-prog" id="subjThumbProg" style="width:0"></div>
+          </div>
+          <div class="thumb-status" id="subjThumbStatus">✓ Uploaded</div>
+        </div>
+        <input type="hidden" id="subjThumbUrl"/>
+        <button class="badd" id="addSubjBtn">+ Add Subject</button>
+      </div>
+
+      <!-- Add Chapter -->
+      <div class="fpanel" style="animation-delay:.1s">
+        <div class="fp-head"><div class="fp-ic c">📖</div><div class="fp-title">New Chapter</div></div>
+        <div class="fg"><label class="fl">Select Subject</label><select class="fi" id="chSubj"><option value="">— Choose Subject —</option></select></div>
+        <div class="fg"><label class="fl">Chapter Name</label><input class="fi" type="text" id="chapName" placeholder="e.g. Laws of Motion"/></div>
+        <div class="fg">
+          <label class="fl">Thumbnail Image</label>
+          <div class="thumb-upload-area" id="chapThumbArea">
+            <input type="file" accept="image/*" class="thumb-hidden-input" id="chapThumbFile"/>
+            <span class="thumb-upload-ic">🖼️</span>
+            <span class="thumb-upload-txt">Click to upload thumbnail<br/><span style="color:var(--free-badge);font-weight:600;">ImgBB upload</span></span>
+            <div class="thumb-upload-prog" id="chapThumbProg" style="width:0"></div>
+          </div>
+          <div class="thumb-status" id="chapThumbStatus">✓ Uploaded</div>
+        </div>
+        <input type="hidden" id="chapThumbUrl"/>
+        <button class="badd" id="addChapBtn">+ Add Chapter</button>
+      </div>
+
+      <!-- Add Video / PDF / Lecture URL -->
+      <div class="fpanel" style="animation-delay:.15s">
+        <div class="fp-head"><div class="fp-ic v">🎬</div><div class="fp-title">New Note / Video</div></div>
+        <div class="fg"><label class="fl">Select Subject</label><select class="fi" id="vidSubj"><option value="">— Choose Subject —</option></select></div>
+        <div class="fg"><label class="fl">Select Chapter</label><select class="fi" id="vidChap"><option value="">— Choose Chapter —</option></select></div>
+        <div class="fg"><label class="fl">Title</label><input class="fi" type="text" id="vidTitle" placeholder="e.g. Newton's Laws"/></div>
+        <div class="fg"><label class="fl">📎 PDF URL (paste link)</label><input class="fi" type="url" id="vidPdfUrl" placeholder="https://.../notes.pdf"/></div>
+        <div class="fg"><label class="fl">🎥 Lecture URL (YouTube etc)</label><input class="fi" type="url" id="vidLectureUrl" placeholder="https://youtube.com/watch?v=..."/></div>
+        <div class="url-hint"><i>🔗</i> Paste PDF link, lecture link, or both — they'll appear together</div>
+        <div class="fg">
+          <label class="fl">Thumbnail (optional)</label>
+          <div class="thumb-upload-area" id="vidThumbArea">
+            <input type="file" accept="image/*" class="thumb-hidden-input" id="vidThumbFile"/>
+            <span class="thumb-upload-ic">🖼️</span>
+            <span class="thumb-upload-txt">Click to upload thumbnail<br/><span style="color:var(--free-badge);font-weight:600;">ImgBB upload</span></span>
+            <div class="thumb-upload-prog" id="vidThumbProg" style="width:0"></div>
+          </div>
+          <div class="thumb-status" id="vidThumbStatus">✓ Uploaded</div>
+        </div>
+        <input type="hidden" id="vidThumbUrl"/>
+        <button class="badd" id="addVidBtn">+ Add Note/Video</button>
+      </div>
+    </div>
+
+    <!-- DB Tree -->
+    <div class="sec-head"><div class="sec-title">Content Library</div></div>
+    <div class="db-panel">
+      <div class="db-panel-head">
+        <div class="db-title">Live Database · PDF & Lectures</div>
+        <div class="live-pill"><div class="live-dot"></div>REALTIME</div>
+      </div>
+      <div id="dbTree">
+        <div class="empty-st"><div class="empty-st-ic">🗄️</div><div class="empty-st-tx">No content yet. Add your first subject!</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged }
+  from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+import { getDatabase, ref, push, remove, onValue }
+  from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
+
+ const firebaseConfig = {
+  apiKey: "AIzaSyBE3liqTY30a6kw4WzknuDI5wRMbjYC8zQ",
+  authDomain: "th-7e1b4.firebaseapp.com",
+  databaseURL: "https://th-7e1b4-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "th-7e1b4",
+  storageBucket: "th-7e1b4.firebasestorage.app",
+  messagingSenderId: "177367546112",
+  appId: "1:177367546112:web:70577d77bd8985bbab9be5"
+};
+
+const IMGBB_KEY = "8f79961c441581fe2799062a4c53e885";
+
+const app  = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db   = getDatabase(app);
+const $    = id => document.getElementById(id);
+
+function toast(msg,type='success'){
+  $('tmsg').textContent=msg;
+  const t=$('toast');t.className='show '+type;
+  setTimeout(()=>t.className='',3200);
+}
+
+const ICONS=['📐','⚡','🧬','🌍','💻','🎯','🔭','🧪','🎨','🏛️','🧠','📊'];
+let cache={};
+
+/* AUTH */
+onAuthStateChanged(auth, user=>{
+  $('loader').classList.add('hide');
+  if(user){
+    $('tright').style.display='flex';
+    $('adminEmail').textContent=user.email;
+    $('sidebarAdminName').textContent=user.email.split('@')[0];
+    $('loginPage').classList.remove('active'); $('loginPage').style.display='none';
+    $('adminPage').classList.add('active');    $('adminPage').style.display='flex';
+    initRT();
+  } else {
+    $('tright').style.display='none';
+    $('adminPage').classList.remove('active'); $('adminPage').style.display='none';
+    $('loginPage').classList.add('active');    $('loginPage').style.display='flex';
+  }
+});
+$('loginBtn').onclick=async()=>{
+  const em=$('loginEmail').value.trim(),pw=$('loginPass').value;
+  $('loginError').style.display='none';
+  if(!em||!pw){showE('Please fill in all fields.');return;}
+  $('loginBtn').textContent='Signing in…';$('loginBtn').disabled=true;
+  try{await signInWithEmailAndPassword(auth,em,pw);}
+  catch(e){showE(ferr(e.code));$('loginBtn').textContent='Access Admin Panel →';$('loginBtn').disabled=false;}
+};
+['loginEmail','loginPass'].forEach(id=>$(id).addEventListener('keydown',e=>{if(e.key==='Enter')$('loginBtn').click();}));
+function showE(m){const e=$('loginError');e.textContent=m;e.style.display='block';}
+function ferr(c){return{'auth/invalid-email':'Invalid email.','auth/user-not-found':'No account found.','auth/wrong-password':'Incorrect password.','auth/too-many-requests':'Too many attempts.'}[c]||'Login failed.';}
+$('logoutBtn').onclick=()=>signOut(auth);
+
+/* IMGBB UPLOAD */
+async function uploadToImgBB(file, areaEl, progEl, statusEl) {
+  areaEl.classList.add('uploading');
+  statusEl.className='thumb-status'; statusEl.textContent='Uploading…';
+  statusEl.style.display='flex'; statusEl.style.color='var(--text2)';
+  let prog=0;
+  const ticker=setInterval(()=>{prog=Math.min(prog+8,88);progEl.style.width=prog+'%';},120);
+  try {
+    const fd=new FormData();
+    fd.append('image',file);
+    const res=await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_KEY}`,{method:'POST',body:fd});
+    const json=await res.json();
+    clearInterval(ticker); progEl.style.width='100%';
+    if(json.success){
+      const url=json.data.display_url;
+      areaEl.classList.remove('uploading');
+      areaEl.classList.add('has-img');
+      areaEl.innerHTML=`<img src="${url}" alt="thumb"/><div class="thumb-upload-overlay"><span>🔄 Change</span></div>`;
+      areaEl.onclick=()=>areaEl.querySelector('input[type=file]') || triggerReUpload(areaEl,progEl,statusEl);
+      statusEl.className='thumb-status show';statusEl.style.color='var(--green)';statusEl.textContent='✓ Thumbnail uploaded';
+      setTimeout(()=>progEl.style.width='0',600);
+      return url;
+    } else {
+      throw new Error(json.error?.message||'Upload failed');
+    }
+  } catch(err){
+    clearInterval(ticker);progEl.style.width='0';
+    areaEl.classList.remove('uploading');
+    statusEl.className='thumb-status show err';statusEl.textContent='✗ '+err.message;
+    toast('ImgBB upload failed: '+err.message,'error');
+    return null;
+  }
+}
+
+/* SETUP THUMB UPLOADER */
+function setupThumbUploader(areaId, fileId, progId, statusId, hiddenId) {
+  const area=$(areaId), fileInput=$(fileId), prog=$(progId), status=$(statusId), hidden=$(hiddenId);
+  area.onclick=()=>fileInput.click();
+  fileInput.onchange=async(e)=>{
+    const file=e.target.files[0];
+    if(!file)return;
+    if(file.size>32*1024*1024){toast('File too large (max 32MB)','error');return;}
+    const url=await uploadToImgBB(file,area,prog,status);
+    if(url) hidden.value=url;
+  };
+}
+
+setupThumbUploader('subjThumbArea','subjThumbFile','subjThumbProg','subjThumbStatus','subjThumbUrl');
+setupThumbUploader('chapThumbArea','chapThumbFile','chapThumbProg','chapThumbStatus','chapThumbUrl');
+setupThumbUploader('vidThumbArea','vidThumbFile','vidThumbProg','vidThumbStatus','vidThumbUrl');
+
+function resetThumb(areaId, fileId, progId, statusId, hiddenId) {
+  $(hiddenId).value='';
+  $(statusId).className='thumb-status';
+  $(progId).style.width='0';
+  const area=$(areaId);
+  area.className='thumb-upload-area';
+  area.innerHTML=`<input type="file" accept="image/*" class="thumb-hidden-input" id="${fileId}"/>
+    <span class="thumb-upload-ic">🖼️</span>
+    <span class="thumb-upload-txt">Click to upload thumbnail<br/><span style="color:var(--free-badge);font-weight:600;">ImgBB upload</span></span>
+    <div class="thumb-upload-prog" id="${progId}" style="width:0"></div>`;
+  setupThumbUploader(areaId, fileId, progId, statusId, hiddenId);
+}
+
+/* RT DATABASE */
+function initRT(){
+  onValue(ref(db,'subjects'),snap=>{
+    cache=snap.val()||{};
+    updateDropdowns();
+    renderTree(cache);
+    updateStats(cache);
+  });
+}
+function updateStats(d){
+  let s=0,c=0,v=0;
+  Object.values(d).forEach(sub=>{s++;Object.values(sub.chapters||{}).forEach(ch=>{c++;v+=Object.keys(ch.videos||{}).length;});});
+  $('statS').textContent=s;$('statC').textContent=c;$('statV').textContent=v;
+}
+function updateDropdowns(){
+  const opts=Object.entries(cache).map(([id,s])=>`<option value="${id}">${s.name||'Untitled'}</option>`).join('');
+  ['chSubj','vidSubj'].forEach(id=>{const cur=$(id).value;$(id).innerHTML='<option value="">— Choose Subject —</option>'+opts;if(cur)$(id).value=cur;});
+  updateChapDrop();
+}
+$('vidSubj').addEventListener('change',updateChapDrop);
+function updateChapDrop(){
+  const sid=$('vidSubj').value;
+  const chs=sid&&cache[sid]?.chapters?cache[sid].chapters:{};
+  $('vidChap').innerHTML='<option value="">— Choose Chapter —</option>'+Object.entries(chs).map(([id,c])=>`<option value="${id}">${c.name||'Untitled'}</option>`).join('');
+}
+
+/* ADD SUBJECT */
+$('addSubjBtn').onclick=async()=>{
+  const nm=$('subjName').value.trim();
+  if(!nm){toast('Enter a subject name.','error');return;}
+  $('addSubjBtn').disabled=true;$('addSubjBtn').textContent='Adding…';
+  try{
+    const payload={name:nm};
+    if($('subjThumbUrl').value) payload.thumbnail=$('subjThumbUrl').value;
+    await push(ref(db,'subjects'),payload);
+    $('subjName').value='';
+    resetThumb('subjThumbArea','subjThumbFile','subjThumbProg','subjThumbStatus','subjThumbUrl');
+    toast('✅ Subject added!');
+  }catch(e){toast('Error: '+e.message,'error');}
+  $('addSubjBtn').disabled=false;$('addSubjBtn').textContent='+ Add Subject';
+};
+
+/* ADD CHAPTER */
+$('addChapBtn').onclick=async()=>{
+  const sid=$('chSubj').value,nm=$('chapName').value.trim();
+  if(!sid){toast('Select a subject.','error');return;}
+  if(!nm){toast('Enter a chapter name.','error');return;}
+  $('addChapBtn').disabled=true;$('addChapBtn').textContent='Adding…';
+  try{
+    const payload={name:nm};
+    if($('chapThumbUrl').value) payload.thumbnail=$('chapThumbUrl').value;
+    await push(ref(db,`subjects/${sid}/chapters`),payload);
+    $('chapName').value='';
+    resetThumb('chapThumbArea','chapThumbFile','chapThumbProg','chapThumbStatus','chapThumbUrl');
+    toast('✅ Chapter added!');
+  }catch(e){toast('Error: '+e.message,'error');}
+  $('addChapBtn').disabled=false;$('addChapBtn').textContent='+ Add Chapter';
+};
+
+/* ADD VIDEO / PDF / LECTURE (URL based) */
+$('addVidBtn').onclick=async()=>{
+  const sid=$('vidSubj').value,cid=$('vidChap').value;
+  const title=$('vidTitle').value.trim();
+  const pdfUrl=$('vidPdfUrl').value.trim();
+  const lectureUrl=$('vidLectureUrl').value.trim();
+  
+  if(!sid){toast('Select a subject.','error');return;}
+  if(!cid){toast('Select a chapter.','error');return;}
+  if(!title){toast('Enter a title.','error');return;}
+  if(!pdfUrl && !lectureUrl){toast('Paste at least one URL (PDF or Lecture).','error');return;}
+  
+  $('addVidBtn').disabled=true;$('addVidBtn').textContent='Adding…';
+  try{
+    const payload={
+      title,
+      pdfUrl: pdfUrl || null,
+      lectureUrl: lectureUrl || null,
+      hasPdf: !!pdfUrl,
+      hasLecture: !!lectureUrl
+    };
+    if($('vidThumbUrl').value) payload.thumbnail=$('vidThumbUrl').value;
+    await push(ref(db,`subjects/${sid}/chapters/${cid}/videos`),payload);
+    $('vidTitle').value='';$('vidPdfUrl').value='';$('vidLectureUrl').value='';
+    resetThumb('vidThumbArea','vidThumbFile','vidThumbProg','vidThumbStatus','vidThumbUrl');
+    toast('✅ Content added with URLs!');
+  }catch(e){toast('Error: '+e.message,'error');}
+  $('addVidBtn').disabled=false;$('addVidBtn').textContent='+ Add Note/Video';
+};
+
+/* RENDER TREE (with PDF & Lecture URLs) */
+function renderTree(data){
+  const tree=$('dbTree');
+  tree.innerHTML='';
+  const entries=Object.entries(data);
+  if(!entries.length){
+    tree.innerHTML=`<div class="empty-st"><div class="empty-st-ic">🗄️</div><div class="empty-st-tx">No content yet. Add your first subject!</div></div>`;
+    return;
+  }
+  entries.forEach(([sid,subj],si)=>{
+    const chaps=subj.chapters||{},cc=Object.keys(chaps).length;
+    const thumbHtml=subj.thumbnail
+      ?`<img class="sic-thumb" src="${subj.thumbnail}" alt="thumb"/>`
+      :`<div class="sic">${ICONS[si%ICONS.length]}</div>`;
+    const node=document.createElement('div');
+    node.className='snode';
+    node.innerHTML=`
+      <div class="srow">
+        <div class="sleft">${thumbHtml}<div><div class="snm">${subj.name||'Untitled'}</div><div class="smt">${cc} chapter${cc!==1?'s':''}</div></div></div>
+        <div class="sacts"><button class="bdel" data-ds="${sid}">Delete</button><span class="tarr">›</span></div>
+      </div>
+      <div class="cbox" id="cbox-${sid}"></div>`;
+    node.querySelector('.srow').addEventListener('click',e=>{if(e.target.closest('.bdel'))return;node.classList.toggle('open');});
+    node.querySelector(`[data-ds="${sid}"]`).onclick=()=>delS(sid,subj.name);
+    const cbox=node.querySelector(`#cbox-${sid}`);
+    if(!cc){
+      cbox.innerHTML=`<div class="empty-st" style="padding:10px 0"><div class="empty-st-tx">No chapters yet.</div></div>`;
+    } else {
+      let ci=1;
+      Object.entries(chaps).forEach(([cid,chap])=>{
+        const vids=chap.videos||{},vc=Object.keys(vids).length;
+        const cThumbHtml=chap.thumbnail
+          ?`<img class="cic-thumb" src="${chap.thumbnail}" alt=""/>`
+          :`<div class="cic">${String(ci).padStart(2,'0')}</div>`;
+        const cn=document.createElement('div');
+        cn.className='cnode';
+        cn.innerHTML=`
+          <div class="crow">
+            <div class="cleft">${cThumbHtml}<div><div class="cnm">${chap.name||'Chapter'}</div><div class="cmt">${vc} item${vc!==1?'s':''}</div></div></div>
+            <div class="cacts"><button class="bdel" data-dc="${cid}" data-sid="${sid}">Delete</button><span class="carr">›</span></div>
+          </div>
+          <div class="vbox" id="vbox-${cid}"></div>`;
+        cn.querySelector('.crow').addEventListener('click',e=>{if(e.target.closest('.bdel'))return;cn.classList.toggle('open');});
+        cn.querySelector(`[data-dc]`).onclick=()=>delC(sid,cid,chap.name);
+        const vbox=cn.querySelector(`#vbox-${cid}`);
+        if(!vc){
+          vbox.innerHTML=`<div class="empty-st" style="padding:8px 0"><div class="empty-st-tx">No videos/PDFs.</div></div>`;
+        } else {
+          Object.entries(vids).forEach(([vid,v])=>{
+            const vThumbHtml=v.thumbnail
+              ?`<img class="vic-thumb" src="${v.thumbnail}" alt=""/>`
+              :`<div class="vic">${v.hasPdf && v.hasLecture ? '📚' : (v.hasPdf ? '📄' : '🎬')}</div>`;
+            const vr=document.createElement('div');
+            vr.className='vrow-admin';
+            
+            let urlDisplay = '';
+            if(v.pdfUrl) urlDisplay += `<a class="vurl" href="${v.pdfUrl}" target="_blank">📎 PDF</a> `;
+            if(v.lectureUrl) urlDisplay += `<a class="vurl" href="${v.lectureUrl}" target="_blank">🎥 Lecture</a>`;
+            if(!urlDisplay) urlDisplay = '<span class="vurl">No URLs</span>';
+            
+            vr.innerHTML=`
+              <div class="vleft">${vThumbHtml}<div><div class="vnm">${v.title||'Item'}</div><div style="display:flex; gap:8px; flex-wrap:wrap;">${urlDisplay}</div></div></div>
+              <button class="bdel-sm" data-dv="${vid}">✕</button>`;
+            vr.querySelector(`[data-dv]`).onclick=()=>delV(sid,cid,vid,v.title);
+            vbox.appendChild(vr);
+          });
+        }
+        cbox.appendChild(cn);ci++;
+      });
+    }
+    tree.appendChild(node);
+  });
+}
+
+async function delS(sid,nm){if(!confirm(`Delete subject "${nm}" and ALL its content?`))return;try{await remove(ref(db,`subjects/${sid}`));toast('🗑️ Subject deleted.');}catch(e){toast('Error: '+e.message,'error');}}
+async function delC(sid,cid,nm){if(!confirm(`Delete chapter "${nm}" and all its videos?`))return;try{await remove(ref(db,`subjects/${sid}/chapters/${cid}`));toast('🗑️ Chapter deleted.');}catch(e){toast('Error: '+e.message,'error');}}
+async function delV(sid,cid,vid,nm){if(!confirm(`Delete item "${nm}"?`))return;try{await remove(ref(db,`subjects/${sid}/chapters/${cid}/videos/${vid}`));toast('🗑️ Deleted.');}catch(e){toast('Error: '+e.message,'error');}}
+</script>
+<script>
+document.addEventListener("contextmenu", e => e.preventDefault());
+document.addEventListener("selectstart", e => e.preventDefault());
+document.addEventListener("dragstart", e => e.preventDefault());
+document.addEventListener("keydown", e => {
+  if (e.key === "F12" || (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key.toUpperCase())) || (e.ctrlKey && e.key.toUpperCase() === "U")) {
+    e.preventDefault(); e.stopPropagation();
+  }
+});
+</script> 
+</body>
+</html>
+  
