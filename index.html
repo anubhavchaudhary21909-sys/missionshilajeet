@@ -1,330 +1,328 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>Mission JEET – Let's Study Batches</title>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<style>
-*{margin:0;padding:0;box-sizing:border-box;}
-body{
-  font-family:'Nunito',sans-serif;
-  background:#f5f6fa;
-  color:#111;
-  -webkit-tap-highlight-color: transparent;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Mission JEET – DORNA Batches</title>
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: #f5f6fa;
+      color: #111;
+      -webkit-tap-highlight-color: transparent;
+    }
+    /* HEADER */
+    .header {
+      width: 100%;
+      background: #0d1b3d;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.25);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .header-left img {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 0 12px rgba(255,215,0,0.4);
+      background: #ffd449;
+    }
+    .header-left span {
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: #ffd449;
+      letter-spacing: 1px;
+      font-family: 'Rajdhani';
+    }
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: white;
+      padding: 8px 14px;
+      border-radius: 40px;
+      gap: 8px;
+      width: 220px;
+      transition: all 0.2s;
+    }
+    .search-box input {
+      border: none;
+      outline: none;
+      font-size: 14px;
+      width: 100%;
+      background: transparent;
+    }
+    .header-btn {
+      background: #ffd449;
+      color: #0d1b3d;
+      padding: 8px 18px;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+      font-weight: 800;
+      transition: .2s;
+      font-size: 0.9rem;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .header-btn:hover { opacity: .85; transform: scale(0.97); }
 
-/* HEADER */
-.header{
-  width:100%;
-  background:#0d1b3d;
-  padding:12px 24px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  box-shadow:0 3px 12px rgba(0,0,0,0.25);
-  position:sticky;
-  top:0;
-  z-index:50;
-  flex-wrap:wrap;
-  gap:12px;
-}
+    /* BANNER */
+    .hero-banner {
+      width: 90%;
+      margin: 22px auto;
+      height: 260px;
+      border-radius: 28px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+      cursor: pointer;
+    }
+    .banner-slide {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding: 22px;
+      position: relative;
+      transition: background 0.4s ease;
+    }
+    .banner-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(0,0,0,0.7), rgba(0,0,0,0.2));
+    }
+    .banner-left { color: white; position: relative; z-index: 2; }
+    .banner-title {
+      font-size: 32px;
+      font-family: 'Rajdhani';
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+    .banner-sub {
+      font-size: 16px;
+      color: #ffd449;
+      font-weight: 600;
+    }
+    .banner-price {
+      position: relative;
+      background: white;
+      padding: 10px 18px;
+      border-radius: 20px;
+      box-shadow: 0 0 12px rgba(0,0,0,.3);
+      text-align: center;
+      z-index: 2;
+    }
+    .banner-price .old {
+      text-decoration: line-through;
+      color: #e53935;
+      font-size: 13px;
+    }
+    .banner-price .new {
+      font-size: 26px;
+      font-weight: 900;
+      color: #0d1b3d;
+      line-height: 1;
+    }
+    .banner-dots {
+      position: absolute;
+      bottom: 14px;
+      left: 0; right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      z-index: 3;
+    }
+    .dot {
+      width: 10px; height: 10px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.6);
+      transition: 0.2s;
+      cursor: pointer;
+    }
+    .dot.active {
+      width: 28px;
+      background: #ffd449;
+    }
 
-.header-left{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-.header-left img{
-  width:50px;
-  height:50px;
-  border-radius:12px;
-  object-fit:cover;
-  box-shadow:0 0 12px rgba(255,215,0,0.4);
-  background:#ffd449;
-}
-.header-left span{
-  font-weight:800;
-  font-size:1.3rem;
-  color:#ffd449;
-  letter-spacing:1px;
-  font-family:'Rajdhani';
-}
+    /* BATCHES SECTION */
+    .section {
+      width: 90%;
+      margin: 28px auto;
+    }
+    .section h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      font-weight: 800;
+      color: #0d1b3d;
+      border-left: 6px solid #ffd449;
+      padding-left: 16px;
+    }
+    .grid {
+      display: grid;
+      gap: 24px;
+    }
+    @media(min-width:768px) {
+      .grid {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      }
+    }
+    .card {
+      background: white;
+      border-radius: 28px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      overflow: hidden;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 30px rgba(0,0,0,0.15);
+    }
+    .card-banner {
+      height: 160px;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding: 16px;
+      position: relative;
+    }
+    .card-badge {
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(2px);
+      padding: 5px 12px;
+      border-radius: 40px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #ffd449;
+    }
+    .card-price {
+      background: white;
+      border-radius: 16px;
+      padding: 5px 12px;
+      text-align: center;
+      font-weight: 700;
+    }
+    .card-price .old {
+      color: #e53935;
+      text-decoration: line-through;
+      font-size: 12px;
+    }
+    .card-price .new {
+      font-size: 18px;
+      color: #0d1b3d;
+      font-weight: 800;
+    }
+    .card-content {
+      padding: 18px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-title {
+      font-size: 19px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: #0b1a3a;
+    }
+    .card-validity {
+      font-size: 13px;
+      color: #4a5568;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+    .fa-calendar { color: #ffd449; }
+    .lets-study-badge {
+      background: #ff8c42;
+      color: white;
+      font-size: 11px;
+      border-radius: 30px;
+      padding: 4px 12px;
+      display: inline-block;
+      margin: 8px 0 12px 0;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      width: fit-content;
+    }
+    .card-btn {
+      background: #0d1b3d;
+      color: white;
+      border: none;
+      padding: 12px 16px;
+      border-radius: 40px;
+      font-weight: 800;
+      font-size: 14px;
+      cursor: pointer;
+      margin-top: 16px;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+    }
+    .card-btn:hover {
+      background: #ff8c42;
+      color: #0d1b3d;
+      transform: scale(0.98);
+    }
+    .empty-message {
+      text-align: center;
+      padding: 40px;
+      background: #eef2ff;
+      border-radius: 30px;
+      font-weight: 600;
+      color: #2c3e66;
+    }
 
-.header-right{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  flex-wrap:wrap;
-}
-.search-box{
-  display:flex;
-  align-items:center;
-  background:white;
-  padding:8px 14px;
-  border-radius:40px;
-  gap:8px;
-  width:220px;
-  transition:all 0.2s;
-}
-.search-box input{
-  border:none;
-  outline:none;
-  font-size:14px;
-  width:100%;
-  background:transparent;
-}
-.header-btn{
-  background:#ffd449;
-  color:#0d1b3d;
-  padding:8px 18px;
-  border:none;
-  border-radius:40px;
-  cursor:pointer;
-  font-weight:800;
-  transition:.2s;
-  font-size:0.9rem;
-  text-decoration: none;
-  display: inline-block;
-}
-.header-btn:hover{opacity:.85;transform:scale(0.97);}
+    /* FOOTER */
+    .footer {
+      margin-top: 50px;
+      text-align: center;
+      padding: 28px;
+      background: #0d1b3d;
+      color: #eef2ff;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+    }
 
-/* BANNER ROTATOR */
-.hero-banner{
-  width:90%;
-  margin:22px auto;
-  height:260px;
-  border-radius:28px;
-  overflow:hidden;
-  position:relative;
-  box-shadow:0 12px 24px rgba(0,0,0,0.2);
-  cursor:pointer;
-}
-.banner-slide{
-  width:100%;
-  height:100%;
-  background-size:cover;
-  background-position:center;
-  display:flex;
-  align-items:flex-end;
-  justify-content:space-between;
-  padding:22px;
-  position:relative;
-  transition:background 0.4s ease;
-}
-.banner-overlay{
-  position:absolute;
-  inset:0;
-  background:linear-gradient(90deg,rgba(0,0,0,0.7),rgba(0,0,0,0.2));
-}
-.banner-left{color:white;position:relative;z-index:2;}
-.banner-title{
-  font-size:32px;
-  font-family:'Rajdhani';
-  font-weight:800;
-  letter-spacing:1px;
-}
-.banner-sub{
-  font-size:16px;
-  color:#ffd449;
-  font-weight:600;
-}
-.banner-price{
-  position:relative;
-  background:white;
-  padding:10px 18px;
-  border-radius:20px;
-  box-shadow:0 0 12px rgba(0,0,0,.3);
-  text-align:center;
-  z-index:2;
-}
-.banner-price .old{
-  text-decoration:line-through;
-  color:#e53935;
-  font-size:13px;
-}
-.banner-price .new{
-  font-size:26px;
-  font-weight:900;
-  color:#0d1b3d;
-  line-height:1;
-}
-.banner-dots{
-  position:absolute;
-  bottom:14px;
-  left:0;right:0;
-  display:flex;
-  justify-content:center;
-  gap:12px;
-  z-index:3;
-}
-.dot{
-  width:10px;height:10px;
-  border-radius:10px;
-  background:rgba(255,255,255,0.6);
-  transition:0.2s;
-  cursor:pointer;
-}
-.dot.active{
-  width:28px;
-  background:#ffd449;
-}
-
-/* BATCHES */
-.section{
-  width:90%;
-  margin:28px auto;
-}
-.section h2{
-  font-size:28px;
-  margin-bottom:20px;
-  font-weight:800;
-  color:#0d1b3d;
-  border-left:6px solid #ffd449;
-  padding-left:16px;
-}
-.grid{
-  display:grid;
-  gap:24px;
-}
-@media(min-width:768px){
-  .grid{
-    grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
-  }
-}
-.card{
-  background:white;
-  border-radius:28px;
-  box-shadow:0 8px 20px rgba(0,0,0,0.08);
-  overflow:hidden;
-  transition:all 0.25s ease;
-  display:flex;
-  flex-direction:column;
-}
-.card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 18px 30px rgba(0,0,0,0.15);
-}
-.card-banner{
-  height:160px;
-  background-size:cover;
-  background-position:center;
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-end;
-  padding:16px;
-  position:relative;
-}
-.card-badge{
-  background:rgba(0,0,0,0.7);
-  backdrop-filter:blur(2px);
-  padding:5px 12px;
-  border-radius:40px;
-  font-size:12px;
-  font-weight:600;
-  color:#ffd449;
-}
-.card-price{
-  background:white;
-  border-radius:16px;
-  padding:5px 12px;
-  text-align:center;
-  font-weight:700;
-}
-.card-price .old{
-  color:#e53935;
-  text-decoration:line-through;
-  font-size:12px;
-}
-.card-price .new{
-  font-size:18px;
-  color:#0d1b3d;
-  font-weight:800;
-}
-.card-content{
-  padding:18px;
-  flex:1;
-  display:flex;
-  flex-direction:column;
-}
-.card-title{
-  font-size:19px;
-  font-weight:800;
-  margin-bottom:8px;
-  color:#0b1a3a;
-}
-.card-validity{
-  font-size:13px;
-  color:#4a5568;
-  display:flex;
-  align-items:center;
-  gap:6px;
-  margin-bottom:10px;
-}
-.fa-calendar{color:#ffd449;}
-.lets-study-badge{
-  background:#ff8c42;
-  color:white;
-  font-size:11px;
-  border-radius:30px;
-  padding:4px 12px;
-  display:inline-block;
-  margin:8px 0 12px 0;
-  font-weight:800;
-  letter-spacing:0.5px;
-  width:fit-content;
-}
-.card-btn{
-  background:#0d1b3d;
-  color:white;
-  border:none;
-  padding:12px 16px;
-  border-radius:40px;
-  font-weight:800;
-  font-size:14px;
-  cursor:pointer;
-  margin-top:16px;
-  transition:0.2s;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  width:100%;
-}
-.card-btn:hover{
-  background:#ff8c42;
-  color:#0d1b3d;
-  transform:scale(0.98);
-}
-.empty-message{
-  text-align:center;
-  padding:40px;
-  background:#eef2ff;
-  border-radius:30px;
-  font-weight:600;
-  color:#2c3e66;
-}
-
-/* FOOTER */
-.footer{
-  margin-top:50px;
-  text-align:center;
-  padding:28px;
-  background:#0d1b3d;
-  color:#eef2ff;
-  font-size:14px;
-  letter-spacing:0.5px;
-}
-
-@media(max-width:550px){
-  .hero-banner{height:200px;}
-  .banner-title{font-size:22px;}
-  .banner-price .new{font-size:20px;}
-  .header-left span{display:none;}
-  .search-box{width:150px;}
-}
-</style>
+    @media(max-width:550px) {
+      .hero-banner { height: 200px; }
+      .banner-title { font-size: 22px; }
+      .banner-price .new { font-size: 20px; }
+      .header-left span { display: none; }
+      .search-box { width: 150px; }
+    }
+  </style>
 </head>
 <body>
 
@@ -337,226 +335,274 @@ body{
   <div class="header-right">
     <div class="search-box">
       <i class="fa fa-search"></i>
-      <input id="searchInput" placeholder="Search 'Let's Study' batches...">
+      <input id="searchInput" placeholder="Search 'Let's Study' batches..." value="">
     </div>
     <a href="https://t.me/vibrunway" target="_blank" rel="noopener noreferrer" class="header-btn">📞 Help</a>
   </div>
 </header>
 
-<!-- ROTATING BANNER -->
+<!-- ROTATING BANNER (clickable) -->
 <div class="hero-banner" id="heroBannerClick">
   <div id="bannerSlide" class="banner-slide"></div>
   <div id="bannerDots" class="banner-dots"></div>
 </div>
 
-<!-- BATCHES SECTION - "LET'S STUDY" BATCHES with OPEN BATCH BUTTON -->
+<!-- BATCHES SECTION — ALL TEXT WRITTEN DIRECTLY (NO VARIABLE INJECTION FOR TEXT) -->
 <div class="section">
-  <h2>📚 Let's Study Batches</h2>
-  <div id="grid" class="grid"></div>
+  <h2>📚 Batches</h2>
+  <div id="grid" class="grid">
+    <!-- 
+      We will populate with JavaScript, but the TEXT content is explicitly written as strings.
+      No variables like `${course.name}` are rendered — we directly write "Dorna JEE (Class 11)" etc.
+    -->
+  </div>
 </div>
 
 <!-- FOOTER -->
 <footer class="footer">
-  <i class="fa-regular fa-copyright"></i> Mission JEET 2026 — Let's Study, Let's Crack IIT & NEET
+  <i class="fa-regular fa-copyright"></i> Mission JEET 2026, Let's Crack IIT & NEET
 </footer>
 
 <script>
-// ---------- BANNER DATA ----------
-const banners = [
-  {
-    title:"Let's Study JEE",
-    sub:"IIT-JEE 2028 | Complete Free Access",
-    old:"₹5999",
-    new:"₹0",
-    img:"https://dulae92u7241v.cloudfront.net/1772100600/admin_v2/metaGallery//1025998_1_2679626_131_drona%20jee%20banner%20website.jpg"
-  },
-  {
-    title:"Let's Study NEET",
-    sub:"NEET 2028 | Zero Cost Learning",
-    old:"₹5999",
-    new:"₹0",
-    img:"https://dulae92u7241v.cloudfront.net/1772100600/admin_v2/metaGallery//703442_1_147818_131_drona%20neet%20banner%20website.jpg"
-  }
-];
+  (function(){
+    "use strict";
 
-// ---------- BATCHES (renamed from free demo) ----------
-const letsStudyCourses = [
-  {
-    id: "lets_study_jee",
-    name:"Let's Study JEE (Class 11)",
-    grade:"JEE Advanced • Class 11",
-    old:5999,
-    price:0,
-    validity:"Complete 2 Year Plan",
-    img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4yCGnkrjiyDYUJhNOcqUPVUg2VAx09p_fxA&s",
-    description: "🎯 Let's Study JEE — India's most loved free program for IIT-JEE aspirants. Get full access to live classes, recorded lectures, DPPs, test series & mentorship.",
-    letsStudyTag: true
-  },
-  {
-    id: "lets_study_neet",
-    name:"Let's Study NEET (Class 11)",
-    grade:"NEET UG • Class 11",
-    old:5999,
-    price:0,
-    validity:"Complete NEET Syllabus",
-    img:"https://dulae92u7241v.cloudfront.net/1772100600/admin_v2/metaGallery//50810_1_3442868_131_drona%20neet%20banner%20app.jpg",
-    description: "🩺 Let's Study NEET — Complete NEET preparation at zero cost. Live interactive sessions, daily practice, AI-based analysis, and doubt support.",
-    letsStudyTag: true
-  }
-];
+    // ---------- BANNER DATA (images only) ----------
+    const banners = [
+      {
+        // All TEXT is written manually in the banner rendering, not from variables
+        img: "https://dulae92u7241v.cloudfront.net/1772100600/admin_v2/metaGallery//1025998_1_2679626_131_drona%20jee%20banner%20website.jpg"
+      },
+      {
+        img: "https://dulae92u7241v.cloudfront.net/1772100600/admin_v2/metaGallery//703442_1_147818_131_drona%20neet%20banner%20website.jpg"
+      }
+    ];
 
-let currentSearchTerm = "";
+    // BATCHES DATA — only used for logic (id, targetFile). All display text is hardcoded.
+    const batchConfig = [
+      {
+        id: "jee",
+        targetFile: "dornajee.html"
+      },
+      {
+        id: "neet",
+        targetFile: "dornaneet.html"
+      }
+    ];
 
-// Global function to open dornajee.html with batch id (as requested)
-function openBatch(id){
-  // Redirect to dornajee.html with batch ID parameter
-  window.location.href = "dornajee.html?batch=" + encodeURIComponent(id);
-}
+    let bannerIndex = 0;
+    let bannerInterval = null;
 
-function renderCourses(searchTerm = "") {
-  const gridContainer = document.getElementById("grid");
-  if (!gridContainer) return;
-  
-  const filtered = letsStudyCourses.filter(course => 
-    course.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
-    course.grade.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-  
-  if(filtered.length === 0){
-    gridContainer.innerHTML = `<div class="empty-message"><i class="fa-regular fa-face-frown"></i> No matching "Let's Study" batches found. Try "JEE" or "NEET"</div>`;
-    return;
-  }
-  
-  gridContainer.innerHTML = filtered.map(course => `
-    <div class="card" data-course-id="${course.id}">
-      <div class="card-banner" style="background-image:url('${course.img}')">
-        <div class="card-badge"><i class="fa-regular fa-star"></i> ${course.grade}</div>
-        <div class="card-price">
-          <div class="old">₹${course.old.toLocaleString()}</div>
-          <div class="new">₹${course.price}</div>
-        </div>
-      </div>
-      <div class="card-content">
-        <div class="card-title">${course.name}</div>
-        <div class="card-validity"><i class="fa fa-calendar"></i> Validity: ${course.validity}</div>
-        <div class="lets-study-badge"><i class="fa-solid fa-book-open"></i> Let's Study — Free Access</div>
-        <div style="font-size:12px; color:#6c757d; margin-top:4px;"><i class="fa-regular fa-clock"></i> Live Classes + Recorded + DPPs + Tests</div>
-        <button class="card-btn" data-batch-id="${course.id}"><i class="fa-solid fa-arrow-right-to-bracket"></i> Open Batch →</button>
-      </div>
-    </div>
-  `).join("");
-  
-  // Attach event listeners to all "Open Batch" buttons
-  document.querySelectorAll('.card-btn').forEach(btn => {
-    btn.removeEventListener('click', handleButtonClick);
-    btn.addEventListener('click', handleButtonClick);
-  });
-}
+    // ---------- OPEN BATCH FUNCTION (click on JEE → dornajee.html / NEET → dornaneet.html) ----------
+    function openBatchPage(batchId) {
+      const config = batchConfig.find(c => c.id === batchId);
+      if (config) {
+        window.location.href = config.targetFile;
+      } else {
+        console.warn('Batch not found');
+      }
+    }
 
-function handleButtonClick(e) {
-  e.stopPropagation(); // prevent any potential card-level click interference
-  const batchId = this.getAttribute('data-batch-id');
-  if(batchId) {
-    openBatch(batchId);
-  }
-}
+    // ---------- RENDER COURSES WITH ALL TEXT WRITTEN DIRECTLY (NO TEMPLATE LITERALS FOR CONTENT) ----------
+    function renderCourses(searchTerm = "") {
+      const gridContainer = document.getElementById("grid");
+      if (!gridContainer) return;
 
-// Optional: if clicking on card body (not button) also redirects? but requirement says button click opens batch.
-// But we also keep card click for optional UX consistency? Not needed, but we'll avoid double navigation.
-// We'll NOT attach card-level click to prevent conflict. Only button click triggers openBatch.
+      // We build exactly two cards (JEE and NEET) with static text.
+      // Filter manually based on search term (search looks at hardcoded text)
+      const lowerSearch = searchTerm.toLowerCase();
+      
+      // JEE card text
+      const jeeName = "Drona JEE (Class 11)";
+      const jeeGrade = "JEE Advanced • Class 11";
+      const jeeValidity = "Complete 2 Year Plan";
+      const jeeImg = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4yCGnkrjiyDYUJhNOcqUPVUg2VAx09p_fxA&s";
+      
+      // NEET card text
+      const neetName = "Dorna NEET (Class 11)";
+      const neetGrade = "NEET UG • Class 11";
+      const neetValidity = "Complete NEET Syllabus";
+      const neetImg = "https://dulae92u7241v.cloudfront.net/1772100600/admin_v2/metaGallery//50810_1_3442868_131_drona%20neet%20banner%20app.jpg";
 
-// Banner carousel
-let bannerIndex = 0;
-let bannerInterval;
+      // Check if each card matches search
+      const showJee = jeeName.toLowerCase().includes(lowerSearch) || jeeGrade.toLowerCase().includes(lowerSearch) || "jee".includes(lowerSearch);
+      const showNeet = neetName.toLowerCase().includes(lowerSearch) || neetGrade.toLowerCase().includes(lowerSearch) || "neet".includes(lowerSearch);
 
-function loadBanner() {
-  const b = banners[bannerIndex];
-  const slide = document.getElementById("bannerSlide");
-  if (!slide) return;
-  slide.style.backgroundImage = `url(${b.img})`;
-  slide.innerHTML = `
-    <div class="banner-overlay"></div>
-    <div class="banner-left">
-      <div class="banner-title">${b.title}</div>
-      <div class="banner-sub">${b.sub}</div>
-    </div>
-    <div class="banner-price">
-      <div class="old">${b.old}</div>
-      <div class="new">${b.new}</div>
-    </div>`;
-  
-  const dotsContainer = document.getElementById("bannerDots");
-  if(dotsContainer){
-    dotsContainer.innerHTML = banners.map((_, d) => `
-      <div class="dot ${d === bannerIndex ? 'active' : ''}" data-dot-index="${d}"></div>
-    `).join("");
-    
-    document.querySelectorAll('.dot').forEach(dot => {
-      dot.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const idx = parseInt(dot.getAttribute('data-dot-index'));
-        if(!isNaN(idx)){
-          bannerIndex = idx;
-          loadBanner();
-          resetBannerTimer();
-        }
+      // If no match
+      if (!showJee && !showNeet) {
+        gridContainer.innerHTML = `<div class="empty-message"><i class="fa-regular fa-face-frown"></i> No matching "Let's Study" batches found. Try "JEE" or "NEET"</div>`;
+        return;
+      }
+
+      // Build HTML string with HARDCODED TEXT — every label, price, badge is written explicitly.
+      let htmlString = '';
+      
+      if (showJee) {
+        htmlString += `
+          <div class="card" data-course-id="jee">
+            <div class="card-banner" style="background-image:url('${jeeImg}')">
+              <div class="card-badge"><i class="fa-regular fa-star"></i> JEE • Class 11</div>
+              <div class="card-price">
+                <div class="old">₹5,999</div>
+                <div class="new">₹0</div>
+              </div>
+            </div>
+            <div class="card-content">
+              <div class="card-title">Dorna JEE (Class 11)</div>
+              <div class="card-validity"><i class="fa fa-calendar"></i> Validity: Complete 2 Year Plan</div>
+              <div class="JEE-badge"><i class="fa-solid fa-book-open"></i>Free Access</div>
+              <div style="font-size:12px; color:#6c757d; margin-top:4px;"><i class="fa-regular fa-clock"></i> Live Classes + Recorded + DPPs + Tests</div>
+              <button class="card-btn" data-batch-id="jee"><i class="fa-solid fa-arrow-right-to-bracket"></i> Open Batch →</button>
+            </div>
+          </div>
+        `;
+      }
+      
+      if (showNeet) {
+        htmlString += `
+          <div class="card" data-course-id="neet">
+            <div class="card-banner" style="background-image:url('${neetImg}')">
+              <div class="card-badge"><i class="fa-regular fa-star"></i> NEET UG • Class 11</div>
+              <div class="card-price">
+                <div class="old">₹5,999</div>
+                <div class="new">₹0</div>
+              </div>
+            </div>
+            <div class="card-content">
+              <div class="card-title">Dorna NEET (Class 11)</div>
+              <div class="card-validity"><i class="fa fa-calendar"></i> Validity: Complete NEET Syllabus</div>
+              <div class="NEET-badge"><i class="fa-solid fa-book-open"></i>Free Access</div>
+              <div style="font-size:12px; color:#6c757d; margin-top:4px;"><i class="fa-regular fa-clock"></i> Live Classes + Recorded + DPPs + Tests</div>
+              <button class="card-btn" data-batch-id="neet"><i class="fa-solid fa-arrow-right-to-bracket"></i> Open Batch →</button>
+            </div>
+          </div>
+        `;
+      }
+
+      gridContainer.innerHTML = htmlString;
+
+      // Attach event listeners to "Open Batch" buttons
+      document.querySelectorAll('.card-btn').forEach(btn => {
+        btn.removeEventListener('click', handleBatchButtonClick);
+        btn.addEventListener('click', handleBatchButtonClick);
       });
+    }
+
+    function handleBatchButtonClick(e) {
+      e.stopPropagation();
+      const batchId = this.getAttribute('data-batch-id');
+      if (batchId) {
+        openBatchPage(batchId);   // jee → dornajee.html , neet → dornaneet.html
+      }
+    }
+
+    // ---------- BANNER RENDERING (ALL TEXT HARDCODED, NO VARIABLE SUBSTITUTION) ----------
+    function loadBanner() {
+      const slide = document.getElementById("bannerSlide");
+      if (!slide) return;
+      
+      // Hardcoded text for each banner index
+      if (bannerIndex === 0) {
+        // JEE Banner
+        slide.style.backgroundImage = `url("${banners[0].img}")`;
+        slide.innerHTML = `
+          <div class="banner-overlay"></div>
+          <div class="banner-left">
+            <div class="banner-title">Dorna JEE</div>
+            <div class="banner-sub">IIT-JEE 2028 | Complete Free Access</div>
+          </div>
+          <div class="banner-price">
+            <div class="old">₹5,999</div>
+            <div class="new">₹0</div>
+          </div>
+        `;
+      } else {
+        // NEET Banner
+        slide.style.backgroundImage = `url("${banners[1].img}")`;
+        slide.innerHTML = `
+          <div class="banner-overlay"></div>
+          <div class="banner-left">
+            <div class="banner-title">Dorna NEET</div>
+            <div class="banner-sub">NEET 2028 | Zero Cost Learning</div>
+          </div>
+          <div class="banner-price">
+            <div class="old">₹5,999</div>
+            <div class="new">₹0</div>
+          </div>
+        `;
+      }
+
+      const dotsContainer = document.getElementById("bannerDots");
+      if (dotsContainer) {
+        dotsContainer.innerHTML = `
+          <div class="dot ${bannerIndex === 0 ? 'active' : ''}" data-dot-index="0"></div>
+          <div class="dot ${bannerIndex === 1 ? 'active' : ''}" data-dot-index="1"></div>
+        `;
+        document.querySelectorAll('.dot').forEach(dot => {
+          dot.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const idx = parseInt(dot.getAttribute('data-dot-index'));
+            if (!isNaN(idx)) {
+              bannerIndex = idx;
+              loadBanner();
+              resetBannerTimer();
+            }
+          });
+        });
+      }
+    }
+
+    function resetBannerTimer() {
+      if (bannerInterval) clearInterval(bannerInterval);
+      bannerInterval = setInterval(() => {
+        bannerIndex = (bannerIndex + 1) % 2;  // only 2 banners
+        loadBanner();
+      }, 3800);
+    }
+
+    // Banner click also opens JEE batch
+    function initBannerClick() {
+      const heroDiv = document.getElementById("heroBannerClick");
+      if (heroDiv) {
+        heroDiv.addEventListener("click", () => {
+          openBatchPage("jee");
+        });
+      }
+    }
+
+    // ---------- SEARCH ----------
+    const searchInput = document.getElementById("searchInput");
+    if (searchInput) {
+      searchInput.addEventListener("input", (e) => {
+        renderCourses(e.target.value);
+      });
+    }
+
+    // ---------- SECURITY (DISABLE INSPECT) ----------
+    document.addEventListener("contextmenu", (e) => e.preventDefault());
+    document.addEventListener("selectstart", (e) => e.preventDefault());
+    document.addEventListener("dragstart", (e) => e.preventDefault());
+    document.addEventListener("keydown", (e) => {
+      if (
+        e.key === "F12" ||
+        (e.ctrlKey && e.shiftKey && ["I","J","C"].includes(e.key.toUpperCase())) ||
+        (e.ctrlKey && e.key.toUpperCase() === "U")
+      ) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
     });
-  }
-}
 
-function resetBannerTimer() {
-  if(bannerInterval) clearInterval(bannerInterval);
-  bannerInterval = setInterval(() => {
-    bannerIndex = (bannerIndex + 1) % banners.length;
-    loadBanner();
-  }, 3800);
-}
+    // ---------- INITIALIZE ----------
+    function init() {
+      renderCourses("");   // will render both cards with static text
+      loadBanner();
+      resetBannerTimer();
+      initBannerClick();
+    }
 
-// Optional banner click: you can keep but it won't interfere with button
-function initBannerClick() {
-  const heroDiv = document.getElementById("heroBannerClick");
-  if(heroDiv){
-    heroDiv.addEventListener("click", () => {
-      // banner click opens JEE batch via openBatch
-      openBatch("lets_study_jee");
-    });
-  }
-}
-
-// Search input handler
-const searchInput = document.getElementById("searchInput");
-if(searchInput){
-  searchInput.addEventListener("input", (e) => {
-    currentSearchTerm = e.target.value;
-    renderCourses(currentSearchTerm);
-  });
-}
-
-// Security: disable right-click, inspect, drag, select
-document.addEventListener("contextmenu", (e) => e.preventDefault());
-document.addEventListener("selectstart", (e) => e.preventDefault());
-document.addEventListener("dragstart", (e) => e.preventDefault());
-document.addEventListener("keydown", (e) => {
-  if(
-    e.key === "F12" ||
-    (e.ctrlKey && e.shiftKey && ["I","J","C"].includes(e.key.toUpperCase())) ||
-    (e.ctrlKey && e.key.toUpperCase() === "U")
-  ){
-    e.preventDefault();
-    e.stopPropagation();
-  }
-});
-
-// Initialize page
-function init() {
-  renderCourses("");
-  loadBanner();
-  resetBannerTimer();
-  initBannerClick();
-}
-
-init();
+    init();
+  })();
 </script>
 </body>
 </html>
