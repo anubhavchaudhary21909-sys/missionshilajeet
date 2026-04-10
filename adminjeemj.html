@@ -1264,6 +1264,32 @@ async function delS(sid,nm){if(!confirm(`Delete subject "${nm}" and ALL its cont
 async function delC(sid,cid,nm){if(!confirm(`Delete chapter "${nm}" and all its videos?`))return;try{await remove(ref(db,`subjects/${sid}/chapters/${cid}`));toast('🗑️ Chapter deleted.');}catch(e){toast('Error: '+e.message,'error');}}
 async function delV(sid,cid,vid,nm){if(!confirm(`Delete video "${nm}"?`))return;try{await remove(ref(db,`subjects/${sid}/chapters/${cid}/videos/${vid}`));toast('🗑️ Video deleted.');}catch(e){toast('Error: '+e.message,'error');}}
 </script>
+
+  <script>
+// Universal protection script (works on any HTML file)
+
+// Disable right click
+document.addEventListener("contextmenu", e => e.preventDefault());
+
+// Disable text selection
+document.addEventListener("selectstart", e => e.preventDefault());
+
+// Disable image/text dragging
+document.addEventListener("dragstart", e => e.preventDefault());
+
+// Block developer tool keys
+document.addEventListener("keydown", e => {
+  const key = e.key.toUpperCase();
+
+  if (
+    key === "F12" ||                                   // F12
+    (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(key)) || // Ctrl+Shift+I/J/C
+    (e.ctrlKey && key === "U")                         // Ctrl+U (view source)
+  ) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+});
+</script>
 </body>
 </html>
-  
