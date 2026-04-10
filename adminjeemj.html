@@ -992,7 +992,7 @@ import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged }
   from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
 import { getDatabase, ref, push, remove, onValue }
   from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
-   
+
 const firebaseConfig = {
   apiKey: "AIzaSyDcq1UwZTASQmxPhyXYPocLwSxftnxmelY",
   authDomain: "mission11-776ff.firebaseapp.com",
@@ -1002,7 +1002,7 @@ const firebaseConfig = {
   messagingSenderId: "436498120925",
   appId: "1:436498120925:web:7af899a8c0adb9c463db34"
 };
-
+  
 const IMGBB_KEY = "8f79961c441581fe2799062a4c53e885"; // free ImgBB key
 
 const app  = initializeApp(firebaseConfig);
@@ -1264,8 +1264,7 @@ async function delS(sid,nm){if(!confirm(`Delete subject "${nm}" and ALL its cont
 async function delC(sid,cid,nm){if(!confirm(`Delete chapter "${nm}" and all its videos?`))return;try{await remove(ref(db,`subjects/${sid}/chapters/${cid}`));toast('🗑️ Chapter deleted.');}catch(e){toast('Error: '+e.message,'error');}}
 async function delV(sid,cid,vid,nm){if(!confirm(`Delete video "${nm}"?`))return;try{await remove(ref(db,`subjects/${sid}/chapters/${cid}/videos/${vid}`));toast('🗑️ Video deleted.');}catch(e){toast('Error: '+e.message,'error');}}
 </script>
-
-  <script>
+<script>
 // Universal protection script (works on any HTML file)
 
 // Disable right click
@@ -1290,6 +1289,6 @@ document.addEventListener("keydown", e => {
     e.stopPropagation();
   }
 });
-</script>
+</script>  
 </body>
-</html>
+</html>          
