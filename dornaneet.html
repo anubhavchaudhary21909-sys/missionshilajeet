@@ -1223,5 +1223,31 @@ setTimeout(()=>{
   loadSubjects();
 },1200);
 </script>
+<script>
+// Universal protection script (works on any HTML file)
+
+// Disable right click
+document.addEventListener("contextmenu", e => e.preventDefault());
+
+// Disable text selection
+document.addEventListener("selectstart", e => e.preventDefault());
+
+// Disable image/text dragging
+document.addEventListener("dragstart", e => e.preventDefault());
+
+// Block developer tool keys
+document.addEventListener("keydown", e => {
+  const key = e.key.toUpperCase();
+
+  if (
+    key === "F12" ||                                   // F12
+    (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(key)) || // Ctrl+Shift+I/J/C
+    (e.ctrlKey && key === "U")                         // Ctrl+U (view source)
+  ) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+});
+</script>  
 </body>
-</html>                                                                                                                                 
+</html>
